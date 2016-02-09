@@ -1,0 +1,59 @@
+/**
+ * author: Milana Prodanov
+ */
+
+package digitrecognition;
+
+import com.maxeler.maxcompiler.v2.build.EngineParameters;
+import com.maxeler.maxcompiler.v2.kernelcompiler.Kernel;
+import com.maxeler.maxcompiler.v2.managers.engine_interfaces.CPUTypes;
+import com.maxeler.maxcompiler.v2.managers.engine_interfaces.EngineInterface;
+import com.maxeler.maxcompiler.v2.managers.engine_interfaces.InterfaceParam;
+import com.maxeler.maxcompiler.v2.managers.standard.Manager;
+import com.maxeler.maxcompiler.v2.managers.standard.Manager.IOType;
+
+class DigitRecognitionManager {
+
+	private static final int X = 784; // size of one test picture (in pixels)
+	private static final int Y = 10000; // number of test images (16|Y, should be satisfied)
+	private static final int C = 16; // one tile has this size: X * C (C| Y, should be satisfied)
+	private static final int REF_NUM = 12; // number of referent "images"(only 10 of these are relevant. Two of these must be added as well because of resource issues)
+					/*
+					    That error happens if we put REF_NUM = 10
+					    Transitioning from non-multiple stream widths 320 (this is the size of one output in bits (sizeof(float) * REF_NUM)) to 128 via a stream of width
+						Tue 11:10: ERROR:   640 is suboptimal for performance and resource utilization.  Use
+						Tue 11:10: ERROR:   Manager.setAllowNonMultipleTransitions(true) or
+						Tue 11:10: ERROR:   config.setAllowNonMultipleTransitions(true) (in a CustomManager) to allow such
+						Tue 11:10: ERROR:   transitions.
+						Tue 11:10: ERROR:   Source='DigitRecognitionKernel.output' Sink='output.output'
+					 * */
+
+
+	public static void main(String[] args) {
+		Manager m = new Manager(new EngineParameters(args));
+		Kernel kernel = new DigitRecognitionKernel(m.makeKernelParameters(), X, C, REF_NUM);
+		m.setKernel(kernel);
+		m.createSLiCinterface(interfaceDefault(X));
+		m.setIO(IOType.ALL_CPU);
+		m.addMaxFileConstant("X", X);
+		m.addMaxFileConstant("Y", Y);
+		m.addMaxFileConstant("CFactor", C);
+		m.addMaxFileConstant("REF_NUM", REF_NUM);
+		m.build();
+	}
+
+	private static EngineInterface interfaceDefault(int ncols) {
+		EngineInterface ei = new EngineInterface();
+
+		InterfaceParam lengthIn = ei.addParam("lengthIn", CPUTypes.INT);
+		InterfaceParam lengthInBytes = lengthIn * CPUTypes.FLOAT.sizeInBytes();
+		InterfaceParam lengthOut = ei.addParam("lengthOut", CPUTypes.INT);
+		InterfaceParam lengthOutBytes = lengthOut * CPUTypes.FLOAT.sizeInBytes();
+
+		ei.setTicks("DigitRecognitionKernel", lengthIn);
+
+		ei.setStream("input", CPUTypes.FLOAT, lengthInBytes);
+		ei.setStream("output", CPUTypes.FLOAT, lengthOutBytes);
+		return ei;
+	}
+}

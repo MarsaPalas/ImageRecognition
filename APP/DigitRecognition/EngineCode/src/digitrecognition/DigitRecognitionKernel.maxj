@@ -1,0 +1,76 @@
+/**
+ * author: Milana Prodanov
+ */
+
+package digitrecognition;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.Kernel;
+import com.maxeler.maxcompiler.v2.kernelcompiler.KernelParameters;
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.CounterChain;
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.memory.Memory;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEType;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.composite.DFEVector;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.composite.DFEVectorType;
+import com.maxeler.maxcompiler.v2.utils.MathUtils;
+
+class DigitRecognitionKernel extends Kernel {
+
+	final DFEType floatType = dfeFloat(8, 24);
+
+	DigitRecognitionKernel(KernelParameters parameters, int X, int C, int REF_NUM) {
+		super(parameters);
+
+		// init parameters
+		int picSize = X;
+		int wRomSize = picSize * REF_NUM; // size of weights in bytes
+		int bRomSize = REF_NUM; // size of biases in bytes
+		int wAddrBits = MathUtils.bitsToAddress(wRomSize);
+		int bAddrBits = MathUtils.bitsToAddress(bRomSize);
+		DFEVectorType<DFEVar> vectorType =
+			new DFEVectorType<DFEVar>(floatType, REF_NUM);
+
+		// Input
+		DFEVar input = io.input("input", floatType);
+
+		CounterChain chain = control.count.makeCounterChain();
+		DFEVar x = chain.addCounter(X, 1);
+		// Set up counter for innermost, y loop, except we count 0..C
+		// instead of yy..yy+C
+		chain.addCounter(C, 1);	// yy
+
+		// Fill the rom with weights...
+		Memory<DFEVar> mappedRomWeights = mem.alloc(floatType, wRomSize);
+		mappedRomWeights.mapToCPU("mappedRomWeights");
+
+		// And fill the rom with biases.
+		Memory<DFEVar> mappedRomBiases = mem.alloc(floatType, bRomSize);
+		mappedRomBiases.mapToCPU("mappedRomBiases");
+
+		// Loop itself
+		DFEVector<DFEVar> carriedSum =
+			vectorType.newInstance(this);
+
+		DFEVector<DFEVar> sum =
+			vectorType.newInstance(this);
+
+		DFEVector<DFEVar> newSum =
+			vectorType.newInstance(this);
+
+		// Address for accessing weights in rom
+		DFEVar wAddr = x.cast(dfeUInt(wAddrBits));
+
+		for(int i=0; i < REF_NUM; i++){
+			DFEVar romOut = mappedRomWeights.read(picSize * i + wAddr);
+			DFEVar bAddr = constant.var(dfeUInt(bAddrBits), i);
+			DFEVar biasOut = mappedRomBiases.read(bAddr);
+			sum[i] <== ((x === 0) ? biasOut : carriedSum[i]);
+			newSum[i] <== input * romOut + sum[i];
+			carriedSum[i] <== stream.offset(newSum[i], -C);
+		}
+
+
+		// We have a controlled output to deliver the sum at the end of each row
+		io.output("output", newSum, vectorType, x === (X - 1));
+	}
+}

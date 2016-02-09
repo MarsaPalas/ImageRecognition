@@ -1,0 +1,1775 @@
+#ifdef MAXCOMPILER_VERSION_INFO
+#define MAXCOMPILER_VERSION_INFO_PRESENT 1
+#define MAXFILE_MAXCOMPILER_VERSION_YEAR         2014
+#define MAXFILE_MAXCOMPILER_VERSION_NUM          1
+#define MAXFILE_MAXCOMPILER_VERSION_POINT        0
+#define MAXFILE_MAXCOMPILER_VERSION_PATCH        ""
+#define MAXFILE_MAXCOMPILER_VERSION_REV          41970
+#define MAXFILE_MAXCOMPILER_VERSION_RELEASE_DATE "2014-05-20"
+#define MAXFILE_MAXCOMPILER_VERSION_RELEASE_MODE true
+#endif
+
+#ifdef MAXFILE_BUILD_INFO
+#define MAXFILE_BUILD_INFO_PRESENT 1
+#define MAXFILE_BUILD_NAME "DigitRecognition"
+#define MAXFILE_BUILD_DIR  "/home/demo/Desktop/MaxCompiler-Builds/DigitRecognition_VECTIS_DFE_SIM"
+#define MAXFILE_BUILD_DATE  20100101
+#define MAXFILE_BUILD_REV   1
+#endif
+
+#ifdef PARAM
+#define PARAM_PRESENT 1
+PARAM(X, 784)
+PARAM(Y, 10000)
+PARAM(CFactor, 16)
+PARAM(REF_NUM, 12)
+PARAM(APP_ID, 0)
+PARAM(REV_ID, 0)
+PARAM(CHAIN_LENGTH, 35)
+PARAM(IS_SIMULATION, 1)
+PARAM(MEC_SUPPORTED, 1)
+PARAM(PCIE_SLAVE_STREAMING, 0)
+PARAM(PCIE_ALIGNMENT, 16)
+PARAM(NUM_IFPGA_LINKS, 0)
+#endif
+
+#ifdef STRING_PARAM
+#define STRING_PARAM_PRESENT 1
+STRING_PARAM(BOARD_MODEL, "MAX3424A")
+#endif
+
+
+
+#ifdef INCLUDE_GENERATED_CPP_HEADERS
+#include "DigitRecognitionKernel.h"
+#endif
+
+
+
+
+
+
+
+
+
+
+#ifdef MANAGER_NODE
+#define MANAGER_NODE_PRESENT 1
+MANAGER_NODE(DigitRecognitionKernel, Kernel)
+MANAGER_NODE(input, PCIe_From_Host_fwd)
+MANAGER_NODE(output, PCIe_To_Host_fwd)
+MANAGER_NODE(Stream_1, DualAspectMux)
+MANAGER_NODE(Stream_6, DualAspectMux)
+MANAGER_NODE(Stream_10, Fifo)
+MANAGER_NODE(Stream_12, Fifo)
+#endif
+
+#ifdef MANAGER_NODE_IO
+#define MANAGER_NODE_IO_PRESENT 1
+MANAGER_NODE_IO(DigitRecognitionKernel, input, IN, STREAM, 32, PULL)
+MANAGER_NODE_IO(DigitRecognitionKernel, output, OUT, STREAM, 384, PUSH)
+MANAGER_NODE_IO(input, input, OUT, STREAM, 128, PULL)
+MANAGER_NODE_IO(output, output, IN, STREAM, 128, PUSH)
+MANAGER_NODE_IO(Stream_1, input, IN, STREAM, 128, PULL)
+MANAGER_NODE_IO(Stream_1, output, OUT, STREAM, 32, PUSH)
+MANAGER_NODE_IO(Stream_6, input, IN, STREAM, 384, PULL)
+MANAGER_NODE_IO(Stream_6, output, OUT, STREAM, 128, PUSH)
+MANAGER_NODE_IO(Stream_10, input, IN, STREAM, 32, PUSH)
+MANAGER_NODE_IO(Stream_10, output, OUT, STREAM, 32, PULL)
+MANAGER_NODE_IO(Stream_12, input, IN, STREAM, 384, PUSH)
+MANAGER_NODE_IO(Stream_12, output, OUT, STREAM, 384, PULL)
+#endif
+
+#ifdef MANAGER_STREAM
+#define MANAGER_STREAM_PRESENT 1
+MANAGER_STREAM(input, input, Stream_1, input, 128)
+MANAGER_STREAM(DigitRecognitionKernel, output, Stream_12, input, 384)
+MANAGER_STREAM(Stream_1, output, Stream_10, input, 32)
+MANAGER_STREAM(Stream_6, output, output, output, 128)
+MANAGER_STREAM(Stream_10, output, DigitRecognitionKernel, input, 32)
+MANAGER_STREAM(Stream_12, output, Stream_6, input, 384)
+#endif
+
+#ifdef MANAGER_NODE_STACK_TRACE
+#define MANAGER_NODE_STACK_TRACE_PRESENT 1
+MANAGER_NODE_STACK_TRACE(DigitRecognitionKernel, "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:357)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:42)\n")
+MANAGER_NODE_STACK_TRACE(input, "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:357)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:42)\n")
+MANAGER_NODE_STACK_TRACE(output, "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:357)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:42)\n")
+MANAGER_NODE_STACK_TRACE(Stream_1, "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:357)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:42)\n")
+MANAGER_NODE_STACK_TRACE(Stream_6, "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:357)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:42)\n")
+MANAGER_NODE_STACK_TRACE(Stream_10, "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:357)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:42)\n")
+MANAGER_NODE_STACK_TRACE(Stream_12, "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:357)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:42)\n")
+#endif
+
+
+#ifdef MANAGER_NODE_PROPERTY
+#define MANAGER_NODE_PROPERTY_PRESENT 1
+MANAGER_NODE_PROPERTY(DigitRecognitionKernel, control_pipelining_depth, 2)
+#endif
+
+#ifdef DUPLICATED_MAPPED_MEMORY
+#define DUPLICATED_MAPPED_MEMORY_PRESENT 1
+DUPLICATED_MAPPED_MEMORY(DigitRecognitionKernel.mappedRomWeights, DigitRecognitionKernel.replicated_mem_0_mappedRomWeights)
+DUPLICATED_MAPPED_MEMORY(DigitRecognitionKernel.mappedRomWeights, DigitRecognitionKernel.replicated_mem_1_mappedRomWeights)
+DUPLICATED_MAPPED_MEMORY(DigitRecognitionKernel.mappedRomWeights, DigitRecognitionKernel.replicated_mem_2_mappedRomWeights)
+DUPLICATED_MAPPED_MEMORY(DigitRecognitionKernel.mappedRomWeights, DigitRecognitionKernel.replicated_mem_3_mappedRomWeights)
+DUPLICATED_MAPPED_MEMORY(DigitRecognitionKernel.mappedRomWeights, DigitRecognitionKernel.replicated_mem_4_mappedRomWeights)
+DUPLICATED_MAPPED_MEMORY(DigitRecognitionKernel.mappedRomWeights, DigitRecognitionKernel.replicated_mem_5_mappedRomWeights)
+DUPLICATED_MAPPED_MEMORY(DigitRecognitionKernel.mappedRomBiases, DigitRecognitionKernel.replicated_mem_0_mappedRomBiases)
+DUPLICATED_MAPPED_MEMORY(DigitRecognitionKernel.mappedRomBiases, DigitRecognitionKernel.replicated_mem_1_mappedRomBiases)
+DUPLICATED_MAPPED_MEMORY(DigitRecognitionKernel.mappedRomBiases, DigitRecognitionKernel.replicated_mem_2_mappedRomBiases)
+DUPLICATED_MAPPED_MEMORY(DigitRecognitionKernel.mappedRomBiases, DigitRecognitionKernel.replicated_mem_3_mappedRomBiases)
+DUPLICATED_MAPPED_MEMORY(DigitRecognitionKernel.mappedRomBiases, DigitRecognitionKernel.replicated_mem_4_mappedRomBiases)
+DUPLICATED_MAPPED_MEMORY(DigitRecognitionKernel.mappedRomBiases, DigitRecognitionKernel.replicated_mem_5_mappedRomBiases)
+#endif
+
+#ifdef KERNEL_CORE
+#define KERNEL_CORE_PRESENT 1
+KERNEL_CORE(DigitRecognitionKernel)
+#endif
+
+#ifdef KERNEL_HOST_CONTROLLED
+#define KERNEL_HOST_CONTROLLED_PRESENT 1
+KERNEL_HOST_CONTROLLED(DigitRecognitionKernel, DigitRecognitionKernel)
+#endif
+
+#ifdef DEBUG_INPUT_BITS
+#define DEBUG_INPUT_BITS_PRESENT 1
+DEBUG_INPUT_BITS(DigitRecognitionKernel, input, 0)
+#endif
+
+#ifdef DEBUG_OUTPUT_BITS
+#define DEBUG_OUTPUT_BITS_PRESENT 1
+DEBUG_OUTPUT_BITS(DigitRecognitionKernel, output, 0)
+#endif
+
+#ifdef MANAGER_NODE_CPP_SIM_MODEL_CTOR
+#define MANAGER_NODE_CPP_SIM_MODEL_CTOR_PRESENT 1
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(input, PCIePullSourceSyncMax3, "input")
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(Stream_1, DualAspectMuxSync, "Stream_1", 32, 4)
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(Stream_10, FifoPushToPullSync, "Stream_10", false, 512, 32)
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(DigitRecognitionKernel, DigitRecognitionKernel, "DigitRecognitionKernel")
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(Stream_12, FifoPushToPullSync, "Stream_12", false, 512, 384)
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(Stream_6, DualAspectMuxSync, "Stream_6", 128, 3)
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(output, PCIePushSinkSyncMax3, "output")
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(CapabilityReg, CapRegs, "CapabilityReg", 0, 1, 1, 0, 0, 0, 0, 0, 35)
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(ifpga, IFPGARegs)
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(sfa, SFARegs)
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(ChecksumMemory, ChecksumMem, "ChecksumMemory", "d45d895db7d9f7c63203f734898a8ebb812019227a6340f154d0a81816b111ed")
+#endif
+
+#ifdef MANAGER_NODE_CPP_SIM_MODEL_SETUP
+#define MANAGER_NODE_CPP_SIM_MODEL_SETUP_PRESENT 1
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(DigitRecognitionKernel, addDebugRegister, reg_dbg_ctld_almost_empty, 1, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(DigitRecognitionKernel, addDebugRegister, reg_dbg_ctld_done, 1, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(DigitRecognitionKernel, addDebugRegister, reg_dbg_ctld_empty, 1, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(DigitRecognitionKernel, addDebugRegister, reg_dbg_ctld_read, 1, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(DigitRecognitionKernel, addDebugRegister, reg_dbg_ctld_read_pipe_dbg, 3, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(DigitRecognitionKernel, addDebugRegister, reg_dbg_ctld_request, 1, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(DigitRecognitionKernel, addDebugRegister, reg_dbg_done_out, 1, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(DigitRecognitionKernel, addDebugRegister, reg_dbg_fill_level, 5, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(DigitRecognitionKernel, addDebugRegister, reg_dbg_flush_level, 5, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(DigitRecognitionKernel, addDebugRegister, reg_dbg_flush_start, 1, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(DigitRecognitionKernel, addDebugRegister, reg_dbg_flush_start_level, 5, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(DigitRecognitionKernel, addDebugRegister, reg_dbg_flushing, 1, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(DigitRecognitionKernel, addDebugRegister, reg_dbg_full_level, 5, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(DigitRecognitionKernel, addDebugRegister, reg_dbg_out_stall, 1, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(DigitRecognitionKernel, addDebugRegister, reg_dbg_out_valid, 1, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(DigitRecognitionKernel, addDebugRegister, reg_dbg_stall_vector, 1, 0)
+#endif
+
+#ifdef PCIE_STREAM
+#define PCIE_STREAM_PRESENT 1
+PCIE_STREAM(input, STREAM_FROM_HOST, 0)
+PCIE_STREAM(output, STREAM_TO_HOST, 0)
+#endif
+
+#ifdef REG
+#define REG_PRESENT 1
+REG(DigitRecognitionKernel.io_input_force_disabled, 0x0, 1, hwOffsetFix(1, 0, UNSIGNED))
+REG(DigitRecognitionKernel.io_output_force_disabled, 0x1, 1, hwOffsetFix(1, 0, UNSIGNED))
+REG(DigitRecognitionKernel.run_cycle_count, 0x2, 6, hwOffsetFix(48, 0, UNSIGNED))
+REG(DigitRecognitionKernel.current_run_cycle_count, 0x8, 6, hwOffsetFix(48, 0, UNSIGNED))
+REG(DigitRecognitionKernel.dbg_ctld_almost_empty, 0xe, 1, hwBits(1))
+REG(DigitRecognitionKernel.dbg_ctld_done, 0xf, 1, hwBits(1))
+REG(DigitRecognitionKernel.dbg_ctld_empty, 0x10, 1, hwBits(1))
+REG(DigitRecognitionKernel.dbg_ctld_read, 0x11, 1, hwBits(1))
+REG(DigitRecognitionKernel.dbg_ctld_read_pipe_dbg, 0x12, 1, hwBits(3))
+REG(DigitRecognitionKernel.dbg_ctld_request, 0x13, 1, hwBits(1))
+REG(DigitRecognitionKernel.dbg_done_out, 0x14, 1, hwBits(1))
+REG(DigitRecognitionKernel.dbg_fill_level, 0x15, 1, hwBits(5))
+REG(DigitRecognitionKernel.dbg_flush_level, 0x16, 1, hwBits(5))
+REG(DigitRecognitionKernel.dbg_flush_start, 0x17, 1, hwBits(1))
+REG(DigitRecognitionKernel.dbg_flush_start_level, 0x18, 1, hwBits(5))
+REG(DigitRecognitionKernel.dbg_flushing, 0x19, 1, hwBits(1))
+REG(DigitRecognitionKernel.dbg_full_level, 0x1a, 1, hwBits(5))
+REG(DigitRecognitionKernel.dbg_out_stall, 0x1b, 1, hwBits(1))
+REG(DigitRecognitionKernel.dbg_out_valid, 0x1c, 1, hwBits(1))
+REG(DigitRecognitionKernel.dbg_stall_vector, 0x1d, 1, hwBits(1))
+REG(ifpga.ifpga_ctrl, 0x1e, 1, hwBits(8))
+REG(SignalForwardingAdapter.SFA_FORWARD_EN, 0x1f, 4, hwBits(32))
+#endif
+
+#ifdef REG_V2
+#define REG_V2_PRESENT 1
+REG_V2(DigitRecognitionKernel.io_input_force_disabled, 0x0, 1, hwOffsetFix(1, 0, UNSIGNED), HOST_WRITE_ONLY, true)
+REG_V2(DigitRecognitionKernel.io_output_force_disabled, 0x1, 1, hwOffsetFix(1, 0, UNSIGNED), HOST_WRITE_ONLY, true)
+REG_V2(DigitRecognitionKernel.run_cycle_count, 0x2, 6, hwOffsetFix(48, 0, UNSIGNED), HOST_WRITE_ONLY, false)
+REG_V2(DigitRecognitionKernel.current_run_cycle_count, 0x8, 6, hwOffsetFix(48, 0, UNSIGNED), HOST_READ_ONLY, false)
+REG_V2(DigitRecognitionKernel.dbg_ctld_almost_empty, 0xe, 1, hwBits(1), HOST_READ_ONLY, false)
+REG_V2(DigitRecognitionKernel.dbg_ctld_done, 0xf, 1, hwBits(1), HOST_READ_ONLY, false)
+REG_V2(DigitRecognitionKernel.dbg_ctld_empty, 0x10, 1, hwBits(1), HOST_READ_ONLY, false)
+REG_V2(DigitRecognitionKernel.dbg_ctld_read, 0x11, 1, hwBits(1), HOST_READ_ONLY, false)
+REG_V2(DigitRecognitionKernel.dbg_ctld_read_pipe_dbg, 0x12, 1, hwBits(3), HOST_READ_ONLY, false)
+REG_V2(DigitRecognitionKernel.dbg_ctld_request, 0x13, 1, hwBits(1), HOST_READ_ONLY, false)
+REG_V2(DigitRecognitionKernel.dbg_done_out, 0x14, 1, hwBits(1), HOST_READ_ONLY, false)
+REG_V2(DigitRecognitionKernel.dbg_fill_level, 0x15, 1, hwBits(5), HOST_READ_ONLY, false)
+REG_V2(DigitRecognitionKernel.dbg_flush_level, 0x16, 1, hwBits(5), HOST_READ_ONLY, false)
+REG_V2(DigitRecognitionKernel.dbg_flush_start, 0x17, 1, hwBits(1), HOST_READ_ONLY, false)
+REG_V2(DigitRecognitionKernel.dbg_flush_start_level, 0x18, 1, hwBits(5), HOST_READ_ONLY, false)
+REG_V2(DigitRecognitionKernel.dbg_flushing, 0x19, 1, hwBits(1), HOST_READ_ONLY, false)
+REG_V2(DigitRecognitionKernel.dbg_full_level, 0x1a, 1, hwBits(5), HOST_READ_ONLY, false)
+REG_V2(DigitRecognitionKernel.dbg_out_stall, 0x1b, 1, hwBits(1), HOST_READ_ONLY, false)
+REG_V2(DigitRecognitionKernel.dbg_out_valid, 0x1c, 1, hwBits(1), HOST_READ_ONLY, false)
+REG_V2(DigitRecognitionKernel.dbg_stall_vector, 0x1d, 1, hwBits(1), HOST_READ_ONLY, false)
+REG_V2(ifpga.ifpga_ctrl, 0x1e, 1, hwBits(8), HOST_READ_WRITE, false)
+REG_V2(SignalForwardingAdapter.SFA_FORWARD_EN, 0x1f, 4, hwBits(32), HOST_READ_WRITE, false)
+#endif
+
+
+#ifdef MEM2
+#define MEM2_PRESENT 1
+MEM2(DigitRecognitionKernel.replicated_mem_0_mappedRomWeights, 0x400000, hwFloat(8, 24))
+MEM2(DigitRecognitionKernel.replicated_mem_1_mappedRomWeights, 0x410000, hwFloat(8, 24))
+MEM2(DigitRecognitionKernel.replicated_mem_2_mappedRomWeights, 0x420000, hwFloat(8, 24))
+MEM2(DigitRecognitionKernel.replicated_mem_3_mappedRomWeights, 0x430000, hwFloat(8, 24))
+MEM2(DigitRecognitionKernel.replicated_mem_4_mappedRomWeights, 0x440000, hwFloat(8, 24))
+MEM2(DigitRecognitionKernel.replicated_mem_5_mappedRomWeights, 0x450000, hwFloat(8, 24))
+MEM2(DigitRecognitionKernel.replicated_mem_0_mappedRomBiases, 0x460000, hwFloat(8, 24))
+MEM2(DigitRecognitionKernel.replicated_mem_1_mappedRomBiases, 0x470000, hwFloat(8, 24))
+MEM2(DigitRecognitionKernel.replicated_mem_2_mappedRomBiases, 0x480000, hwFloat(8, 24))
+MEM2(DigitRecognitionKernel.replicated_mem_3_mappedRomBiases, 0x490000, hwFloat(8, 24))
+MEM2(DigitRecognitionKernel.replicated_mem_4_mappedRomBiases, 0x4a0000, hwFloat(8, 24))
+MEM2(DigitRecognitionKernel.replicated_mem_5_mappedRomBiases, 0x4b0000, hwFloat(8, 24))
+#endif
+
+#ifdef MEM_DEPTH
+#define MEM_DEPTH_PRESENT 1
+MEM_DEPTH(DigitRecognitionKernel.replicated_mem_0_mappedRomWeights, 9408)
+MEM_DEPTH(DigitRecognitionKernel.replicated_mem_1_mappedRomWeights, 9408)
+MEM_DEPTH(DigitRecognitionKernel.replicated_mem_2_mappedRomWeights, 9408)
+MEM_DEPTH(DigitRecognitionKernel.replicated_mem_3_mappedRomWeights, 9408)
+MEM_DEPTH(DigitRecognitionKernel.replicated_mem_4_mappedRomWeights, 9408)
+MEM_DEPTH(DigitRecognitionKernel.replicated_mem_5_mappedRomWeights, 9408)
+MEM_DEPTH(DigitRecognitionKernel.replicated_mem_0_mappedRomBiases, 12)
+MEM_DEPTH(DigitRecognitionKernel.replicated_mem_1_mappedRomBiases, 12)
+MEM_DEPTH(DigitRecognitionKernel.replicated_mem_2_mappedRomBiases, 12)
+MEM_DEPTH(DigitRecognitionKernel.replicated_mem_3_mappedRomBiases, 12)
+MEM_DEPTH(DigitRecognitionKernel.replicated_mem_4_mappedRomBiases, 12)
+MEM_DEPTH(DigitRecognitionKernel.replicated_mem_5_mappedRomBiases, 12)
+#endif
+
+#ifdef CHECKSUM
+#define CHECKSUM_PRESENT 1
+CHECKSUM("d45d895db7d9f7c63203f734898a8ebb812019227a6340f154d0a81816b111ed")
+#endif
+
+#ifdef CAPABILITY
+#define CAPABILITY_PRESENT 1
+CAPABILITY(MAX3REV, MAX3REVA)
+CAPABILITY(MAX3RAM, DDR3_24GB)
+CAPABILITY(MAX3FPGA, SXT475_2ES)
+#endif
+
+#ifdef DEFINE_DESIGN_NAME
+#define DESIGN_NAME DigitRecognition
+#endif /* DEFINE_DESIGN_NAME */
+
+#ifndef SLIC_NO_DECLARATIONS
+/**\file */
+#ifndef SLIC_DECLARATIONS_DigitRecognition_H
+#define SLIC_DECLARATIONS_DigitRecognition_H
+#include "MaxSLiCInterface.h"
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
+
+#define DigitRecognition_PCIE_ALIGNMENT (16)
+#define DigitRecognition_REF_NUM (12)
+#define DigitRecognition_Y (10000)
+#define DigitRecognition_CFactor (16)
+#define DigitRecognition_X (784)
+
+
+/*----------------------------------------------------------------------------*/
+/*---------------------------- Interface default -----------------------------*/
+/*----------------------------------------------------------------------------*/
+
+
+
+/**
+ * \brief Basic static function for the interface 'default'.
+ * 
+ * \param [in] param_lengthIn Interface Parameter "lengthIn".
+ * \param [in] param_lengthOut Interface Parameter "lengthOut".
+ * \param [in] instream_input The stream should be of size (param_lengthIn * 4) bytes.
+ * \param [out] outstream_output The stream should be of size (param_lengthOut * 4) bytes.
+ * \param [in] inmem_DigitRecognitionKernel_mappedRomBiases Mapped ROM inmem_DigitRecognitionKernel_mappedRomBiases, should be of size (12 * sizeof(double)).
+ * \param [in] inmem_DigitRecognitionKernel_mappedRomWeights Mapped ROM inmem_DigitRecognitionKernel_mappedRomWeights, should be of size (9408 * sizeof(double)).
+ */
+void DigitRecognition(
+	int64_t param_lengthIn,
+	int64_t param_lengthOut,
+	const float *instream_input,
+	float *outstream_output,
+	const double *inmem_DigitRecognitionKernel_mappedRomBiases,
+	const double *inmem_DigitRecognitionKernel_mappedRomWeights);
+
+/**
+ * \brief Basic static non-blocking function for the interface 'default'.
+ * 
+ * Schedule to run on an engine and return immediately.
+ * The status of the run can be checked either by ::max_wait or ::max_nowait;
+ * note that one of these *must* be called, so that associated memory can be released.
+ * 
+ * 
+ * \param [in] param_lengthIn Interface Parameter "lengthIn".
+ * \param [in] param_lengthOut Interface Parameter "lengthOut".
+ * \param [in] instream_input The stream should be of size (param_lengthIn * 4) bytes.
+ * \param [out] outstream_output The stream should be of size (param_lengthOut * 4) bytes.
+ * \param [in] inmem_DigitRecognitionKernel_mappedRomBiases Mapped ROM inmem_DigitRecognitionKernel_mappedRomBiases, should be of size (12 * sizeof(double)).
+ * \param [in] inmem_DigitRecognitionKernel_mappedRomWeights Mapped ROM inmem_DigitRecognitionKernel_mappedRomWeights, should be of size (9408 * sizeof(double)).
+ * \return A handle on the execution status, or NULL in case of error.
+ */
+max_run_t *DigitRecognition_nonblock(
+	int64_t param_lengthIn,
+	int64_t param_lengthOut,
+	const float *instream_input,
+	float *outstream_output,
+	const double *inmem_DigitRecognitionKernel_mappedRomBiases,
+	const double *inmem_DigitRecognitionKernel_mappedRomWeights);
+
+/**
+ * \brief Advanced static interface, structure for the engine interface 'default'
+ * 
+ */
+typedef struct { 
+	int64_t param_lengthIn; /**<  [in] Interface Parameter "lengthIn". */
+	int64_t param_lengthOut; /**<  [in] Interface Parameter "lengthOut". */
+	const float *instream_input; /**<  [in] The stream should be of size (param_lengthIn * 4) bytes. */
+	float *outstream_output; /**<  [out] The stream should be of size (param_lengthOut * 4) bytes. */
+	const double *inmem_DigitRecognitionKernel_mappedRomBiases; /**<  [in] Mapped ROM inmem_DigitRecognitionKernel_mappedRomBiases, should be of size (12 * sizeof(double)). */
+	const double *inmem_DigitRecognitionKernel_mappedRomWeights; /**<  [in] Mapped ROM inmem_DigitRecognitionKernel_mappedRomWeights, should be of size (9408 * sizeof(double)). */
+} DigitRecognition_actions_t;
+
+/**
+ * \brief Advanced static function for the interface 'default'.
+ * 
+ * \param [in] engine The engine on which the actions will be executed.
+ * \param [in,out] interface_actions Actions to be executed.
+ */
+void DigitRecognition_run(
+	max_engine_t *engine,
+	DigitRecognition_actions_t *interface_actions);
+
+/**
+ * \brief Advanced static non-blocking function for the interface 'default'.
+ *
+ * Schedule the actions to run on the engine and return immediately.
+ * The status of the run can be checked either by ::max_wait or ::max_nowait;
+ * note that one of these *must* be called, so that associated memory can be released.
+ *
+ * 
+ * \param [in] engine The engine on which the actions will be executed.
+ * \param [in] interface_actions Actions to be executed.
+ * \return A handle on the execution status of the actions, or NULL in case of error.
+ */
+max_run_t *DigitRecognition_run_nonblock(
+	max_engine_t *engine,
+	DigitRecognition_actions_t *interface_actions);
+
+/**
+ * \brief Group run advanced static function for the interface 'default'.
+ * 
+ * \param [in] group Group to use.
+ * \param [in,out] interface_actions Actions to run.
+ *
+ * Run the actions on the first device available in the group.
+ */
+void DigitRecognition_run_group(max_group_t *group, DigitRecognition_actions_t *interface_actions);
+
+/**
+ * \brief Group run advanced static non-blocking function for the interface 'default'.
+ * 
+ *
+ * Schedule the actions to run on the first device available in the group and return immediately.
+ * The status of the run must be checked with ::max_wait. 
+ * Note that use of ::max_nowait is prohibited with non-blocking running on groups:
+ * see the ::max_run_group_nonblock documentation for more explanation.
+ *
+ * \param [in] group Group to use.
+ * \param [in] interface_actions Actions to run.
+ * \return A handle on the execution status of the actions, or NULL in case of error.
+ */
+max_run_t *DigitRecognition_run_group_nonblock(max_group_t *group, DigitRecognition_actions_t *interface_actions);
+
+/**
+ * \brief Array run advanced static function for the interface 'default'.
+ * 
+ * \param [in] engarray The array of devices to use.
+ * \param [in,out] interface_actions The array of actions to run.
+ *
+ * Run the array of actions on the array of engines.  The length of interface_actions
+ * must match the size of engarray.
+ */
+void DigitRecognition_run_array(max_engarray_t *engarray, DigitRecognition_actions_t *interface_actions[]);
+
+/**
+ * \brief Array run advanced static non-blocking function for the interface 'default'.
+ * 
+ *
+ * Schedule to run the array of actions on the array of engines, and return immediately.
+ * The length of interface_actions must match the size of engarray.
+ * The status of the run can be checked either by ::max_wait or ::max_nowait;
+ * note that one of these *must* be called, so that associated memory can be released.
+ *
+ * \param [in] engarray The array of devices to use.
+ * \param [in] interface_actions The array of actions to run.
+ * \return A handle on the execution status of the actions, or NULL in case of error.
+ */
+max_run_t *DigitRecognition_run_array_nonblock(max_engarray_t *engarray, DigitRecognition_actions_t *interface_actions[]);
+
+/**
+ * \brief Converts a static-interface action struct into a dynamic-interface max_actions_t struct.
+ *
+ * Note that this is an internal utility function used by other functions in the static interface.
+ *
+ * \param [in] maxfile The maxfile to use.
+ * \param [in] interface_actions The interface-specific actions to run.
+ * \return The dynamic-interface actions to run, or NULL in case of error.
+ */
+max_actions_t* DigitRecognition_convert(max_file_t *maxfile, DigitRecognition_actions_t *interface_actions);
+
+/**
+ * \brief Initialise a maxfile.
+ */
+max_file_t* DigitRecognition_init(void);
+
+/* Error handling functions */
+int DigitRecognition_has_errors(void);
+const char* DigitRecognition_get_errors(void);
+void DigitRecognition_clear_errors(void);
+/* Free statically allocated maxfile data */
+void DigitRecognition_free(void);
+/* returns: -1 = error running command; 0 = no error reported */
+int DigitRecognition_simulator_start(void);
+/* returns: -1 = error running command; 0 = no error reported */
+int DigitRecognition_simulator_stop(void);
+
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
+#endif /* SLIC_DECLARATIONS_DigitRecognition_H */
+
+#endif /* SLIC_NO_DECLARATIONS */
+
+#ifdef PHOTON_NODE_DATA
+#define PHOTON_NODE_DATA_PRESENT 1
+PHOTON_NODE_DATA(DigitRecognitionKernel, 3, NodeConstantRawBits, "{HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Count.makeCounterChain(Count.java:493)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:36)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 224, NodeConstantRawBits, "{HWOffsetFix:5, 0, UNSIGNED}\n0x10; 16.0", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.CounterChain.addCounter(CounterChain.java:501)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:40)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 7, NodeCounterV1, "Counter(NUMERIC_INCREMENTING)\nInc: 1\nReset: 0\nInit: 0", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.CounterChain.addCounter(CounterChain.java:501)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:40)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 223, NodeConstantRawBits, "{HWOffsetFix:11, 0, UNSIGNED}\n0x310; 784.0", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.CounterChain.addCounter(CounterChain.java:501)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:37)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 5, NodeCounterV1, "Counter(NUMERIC_INCREMENTING)\nInc: 1\nReset: 0\nInit: 0", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.CounterChain.addCounter(CounterChain.java:501)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:37)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 170, NodeFIFO, "FIFO(6)", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:357)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:42)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 222, NodeConstantRawBits, "{HWOffsetFix:10, 0, UNSIGNED}\n0x30f; 783.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:585)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:74)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 118, NodeEq, "==", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:585)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:74)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 119, NodeInputMappedReg, "Scalar input (io_output_force_disabled)", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:685)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:74)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 120, NodeNot, "~", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:685)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:74)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 121, NodeAnd, "&", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:685)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:74)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 196, NodeFIFO, "FIFO(16)", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:357)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:42)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 0, NodeInputMappedReg, "Scalar input (io_input_force_disabled)", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:606)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:34)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 1, NodeNot, "~", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:606)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:34)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 2, NodeInput, "Input(input)", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:606)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:34)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 221, NodeConstantRawBits, "{HWOffsetFix:14, 0, UNSIGNED}\n0x1ea0; 7840.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.addAsRHS(DFEVar.java:899)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:64)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 8, NodeCast, "{HWOffsetFix:14, 0, UNSIGNED}", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.cast(DFEVar.java:161)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:61)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 100, NodeAdd, "+", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.addAsRHS(DFEVar.java:899)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:64)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 220, NodeConstantRawBits, "{HWOffsetFix:14, 0, UNSIGNED}\n0x21b0; 8624.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.addAsRHS(DFEVar.java:899)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:64)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 109, NodeAdd, "+", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.addAsRHS(DFEVar.java:899)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:64)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 151, NodeMappedRom, "MappedRom 'replicated_mem_5_mappedRomWeights':\n{HWFloat:8, 24} x 9408", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Mem.alloc(Mem.java:67)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:43)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 114, NodeMul, "*", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:956)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:68)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 219, NodeConstantRawBits, "{HWOffsetFix:10, 0, UNSIGNED}\n0x000; 0.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:585)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:67)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 112, NodeEq, "==", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:585)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:67)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 116, NodeStreamOffset, "stream offset: -16", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Stream.offset(Stream.java:245)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:69)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 101, NodeConstantRawBits, "{HWOffsetFix:4, 0, UNSIGNED}\n0xa; 10.0", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Constant.var(Constant.java:99)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:65)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 110, NodeConstantRawBits, "{HWOffsetFix:4, 0, UNSIGNED}\n0xb; 11.0", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Constant.var(Constant.java:99)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:65)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 157, NodeMappedRom, "MappedRom 'replicated_mem_5_mappedRomBiases':\n{HWFloat:8, 24} x 12", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Mem.alloc(Mem.java:67)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:47)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 113, NodeMux, "MUX", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.ternaryIf(DFEVar.java:1148)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:67)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 172, NodeFIFO, "FIFO(3)", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:357)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:42)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 115, NodeAdd, "+", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:864)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:68)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 144, NodeReinterpret, "<{HWRawBits:32}>", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:685)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:74)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 105, NodeMul, "*", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:956)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:68)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 218, NodeConstantRawBits, "{HWOffsetFix:10, 0, UNSIGNED}\n0x000; 0.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:585)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:67)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 103, NodeEq, "==", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:585)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:67)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 107, NodeStreamOffset, "stream offset: -16", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Stream.offset(Stream.java:245)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:69)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 104, NodeMux, "MUX", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.ternaryIf(DFEVar.java:1148)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:67)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 174, NodeFIFO, "FIFO(3)", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:357)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:42)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 106, NodeAdd, "+", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:864)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:68)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 142, NodeReinterpret, "<{HWRawBits:32}>", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:685)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:74)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 217, NodeConstantRawBits, "{HWOffsetFix:14, 0, UNSIGNED}\n0x1880; 6272.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.addAsRHS(DFEVar.java:899)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:64)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 82, NodeAdd, "+", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.addAsRHS(DFEVar.java:899)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:64)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 216, NodeConstantRawBits, "{HWOffsetFix:14, 0, UNSIGNED}\n0x1b90; 7056.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.addAsRHS(DFEVar.java:899)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:64)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 91, NodeAdd, "+", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.addAsRHS(DFEVar.java:899)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:64)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 150, NodeMappedRom, "MappedRom 'replicated_mem_4_mappedRomWeights':\n{HWFloat:8, 24} x 9408", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Mem.alloc(Mem.java:67)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:43)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 96, NodeMul, "*", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:956)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:68)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 215, NodeConstantRawBits, "{HWOffsetFix:10, 0, UNSIGNED}\n0x000; 0.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:585)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:67)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 94, NodeEq, "==", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:585)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:67)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 98, NodeStreamOffset, "stream offset: -16", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Stream.offset(Stream.java:245)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:69)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 83, NodeConstantRawBits, "{HWOffsetFix:4, 0, UNSIGNED}\n0x8; 8.0", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Constant.var(Constant.java:99)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:65)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 92, NodeConstantRawBits, "{HWOffsetFix:4, 0, UNSIGNED}\n0x9; 9.0", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Constant.var(Constant.java:99)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:65)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 156, NodeMappedRom, "MappedRom 'replicated_mem_4_mappedRomBiases':\n{HWFloat:8, 24} x 12", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Mem.alloc(Mem.java:67)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:47)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 95, NodeMux, "MUX", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.ternaryIf(DFEVar.java:1148)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:67)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 176, NodeFIFO, "FIFO(3)", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:357)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:42)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 97, NodeAdd, "+", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:864)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:68)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 140, NodeReinterpret, "<{HWRawBits:32}>", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:685)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:74)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 87, NodeMul, "*", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:956)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:68)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 214, NodeConstantRawBits, "{HWOffsetFix:10, 0, UNSIGNED}\n0x000; 0.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:585)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:67)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 85, NodeEq, "==", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:585)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:67)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 89, NodeStreamOffset, "stream offset: -16", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Stream.offset(Stream.java:245)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:69)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 86, NodeMux, "MUX", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.ternaryIf(DFEVar.java:1148)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:67)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 178, NodeFIFO, "FIFO(3)", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:357)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:42)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 88, NodeAdd, "+", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:864)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:68)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 138, NodeReinterpret, "<{HWRawBits:32}>", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:685)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:74)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 213, NodeConstantRawBits, "{HWOffsetFix:14, 0, UNSIGNED}\n0x1260; 4704.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.addAsRHS(DFEVar.java:899)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:64)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 64, NodeAdd, "+", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.addAsRHS(DFEVar.java:899)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:64)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 212, NodeConstantRawBits, "{HWOffsetFix:14, 0, UNSIGNED}\n0x1570; 5488.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.addAsRHS(DFEVar.java:899)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:64)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 73, NodeAdd, "+", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.addAsRHS(DFEVar.java:899)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:64)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 149, NodeMappedRom, "MappedRom 'replicated_mem_3_mappedRomWeights':\n{HWFloat:8, 24} x 9408", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Mem.alloc(Mem.java:67)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:43)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 78, NodeMul, "*", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:956)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:68)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 211, NodeConstantRawBits, "{HWOffsetFix:10, 0, UNSIGNED}\n0x000; 0.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:585)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:67)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 76, NodeEq, "==", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:585)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:67)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 80, NodeStreamOffset, "stream offset: -16", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Stream.offset(Stream.java:245)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:69)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 65, NodeConstantRawBits, "{HWOffsetFix:4, 0, UNSIGNED}\n0x6; 6.0", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Constant.var(Constant.java:99)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:65)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 74, NodeConstantRawBits, "{HWOffsetFix:4, 0, UNSIGNED}\n0x7; 7.0", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Constant.var(Constant.java:99)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:65)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 155, NodeMappedRom, "MappedRom 'replicated_mem_3_mappedRomBiases':\n{HWFloat:8, 24} x 12", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Mem.alloc(Mem.java:67)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:47)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 77, NodeMux, "MUX", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.ternaryIf(DFEVar.java:1148)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:67)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 180, NodeFIFO, "FIFO(3)", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:357)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:42)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 79, NodeAdd, "+", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:864)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:68)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 136, NodeReinterpret, "<{HWRawBits:32}>", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:685)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:74)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 69, NodeMul, "*", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:956)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:68)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 210, NodeConstantRawBits, "{HWOffsetFix:10, 0, UNSIGNED}\n0x000; 0.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:585)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:67)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 67, NodeEq, "==", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:585)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:67)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 71, NodeStreamOffset, "stream offset: -16", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Stream.offset(Stream.java:245)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:69)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 68, NodeMux, "MUX", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.ternaryIf(DFEVar.java:1148)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:67)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 182, NodeFIFO, "FIFO(3)", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:357)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:42)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 70, NodeAdd, "+", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:864)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:68)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 134, NodeReinterpret, "<{HWRawBits:32}>", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:685)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:74)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 209, NodeConstantRawBits, "{HWOffsetFix:14, 0, UNSIGNED}\n0x0c40; 3136.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.addAsRHS(DFEVar.java:899)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:64)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 46, NodeAdd, "+", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.addAsRHS(DFEVar.java:899)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:64)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 208, NodeConstantRawBits, "{HWOffsetFix:14, 0, UNSIGNED}\n0x0f50; 3920.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.addAsRHS(DFEVar.java:899)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:64)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 55, NodeAdd, "+", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.addAsRHS(DFEVar.java:899)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:64)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 148, NodeMappedRom, "MappedRom 'replicated_mem_2_mappedRomWeights':\n{HWFloat:8, 24} x 9408", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Mem.alloc(Mem.java:67)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:43)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 60, NodeMul, "*", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:956)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:68)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 207, NodeConstantRawBits, "{HWOffsetFix:10, 0, UNSIGNED}\n0x000; 0.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:585)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:67)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 58, NodeEq, "==", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:585)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:67)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 62, NodeStreamOffset, "stream offset: -16", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Stream.offset(Stream.java:245)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:69)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 47, NodeConstantRawBits, "{HWOffsetFix:4, 0, UNSIGNED}\n0x4; 4.0", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Constant.var(Constant.java:99)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:65)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 56, NodeConstantRawBits, "{HWOffsetFix:4, 0, UNSIGNED}\n0x5; 5.0", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Constant.var(Constant.java:99)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:65)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 154, NodeMappedRom, "MappedRom 'replicated_mem_2_mappedRomBiases':\n{HWFloat:8, 24} x 12", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Mem.alloc(Mem.java:67)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:47)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 59, NodeMux, "MUX", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.ternaryIf(DFEVar.java:1148)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:67)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 184, NodeFIFO, "FIFO(3)", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:357)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:42)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 61, NodeAdd, "+", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:864)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:68)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 132, NodeReinterpret, "<{HWRawBits:32}>", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:685)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:74)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 51, NodeMul, "*", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:956)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:68)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 206, NodeConstantRawBits, "{HWOffsetFix:10, 0, UNSIGNED}\n0x000; 0.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:585)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:67)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 49, NodeEq, "==", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:585)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:67)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 53, NodeStreamOffset, "stream offset: -16", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Stream.offset(Stream.java:245)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:69)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 50, NodeMux, "MUX", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.ternaryIf(DFEVar.java:1148)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:67)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 186, NodeFIFO, "FIFO(3)", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:357)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:42)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 52, NodeAdd, "+", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:864)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:68)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 130, NodeReinterpret, "<{HWRawBits:32}>", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:685)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:74)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 205, NodeConstantRawBits, "{HWOffsetFix:14, 0, UNSIGNED}\n0x0620; 1568.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.addAsRHS(DFEVar.java:899)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:64)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 28, NodeAdd, "+", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.addAsRHS(DFEVar.java:899)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:64)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 204, NodeConstantRawBits, "{HWOffsetFix:14, 0, UNSIGNED}\n0x0930; 2352.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.addAsRHS(DFEVar.java:899)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:64)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 37, NodeAdd, "+", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.addAsRHS(DFEVar.java:899)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:64)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 147, NodeMappedRom, "MappedRom 'replicated_mem_1_mappedRomWeights':\n{HWFloat:8, 24} x 9408", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Mem.alloc(Mem.java:67)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:43)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 42, NodeMul, "*", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:956)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:68)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 203, NodeConstantRawBits, "{HWOffsetFix:10, 0, UNSIGNED}\n0x000; 0.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:585)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:67)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 40, NodeEq, "==", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:585)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:67)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 44, NodeStreamOffset, "stream offset: -16", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Stream.offset(Stream.java:245)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:69)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 29, NodeConstantRawBits, "{HWOffsetFix:4, 0, UNSIGNED}\n0x2; 2.0", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Constant.var(Constant.java:99)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:65)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 38, NodeConstantRawBits, "{HWOffsetFix:4, 0, UNSIGNED}\n0x3; 3.0", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Constant.var(Constant.java:99)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:65)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 153, NodeMappedRom, "MappedRom 'replicated_mem_1_mappedRomBiases':\n{HWFloat:8, 24} x 12", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Mem.alloc(Mem.java:67)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:47)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 41, NodeMux, "MUX", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.ternaryIf(DFEVar.java:1148)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:67)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 188, NodeFIFO, "FIFO(3)", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:357)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:42)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 43, NodeAdd, "+", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:864)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:68)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 128, NodeReinterpret, "<{HWRawBits:32}>", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:685)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:74)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 33, NodeMul, "*", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:956)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:68)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 202, NodeConstantRawBits, "{HWOffsetFix:10, 0, UNSIGNED}\n0x000; 0.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:585)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:67)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 31, NodeEq, "==", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:585)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:67)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 35, NodeStreamOffset, "stream offset: -16", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Stream.offset(Stream.java:245)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:69)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 32, NodeMux, "MUX", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.ternaryIf(DFEVar.java:1148)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:67)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 190, NodeFIFO, "FIFO(3)", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:357)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:42)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 34, NodeAdd, "+", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:864)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:68)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 126, NodeReinterpret, "<{HWRawBits:32}>", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:685)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:74)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 191, NodeFIFO, "FIFO(1)", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:357)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:42)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 201, NodeConstantRawBits, "{HWOffsetFix:14, 0, UNSIGNED}\n0x0310; 784.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.addAsRHS(DFEVar.java:899)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:64)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 19, NodeAdd, "+", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.addAsRHS(DFEVar.java:899)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:64)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 146, NodeMappedRom, "MappedRom 'replicated_mem_0_mappedRomWeights':\n{HWFloat:8, 24} x 9408", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Mem.alloc(Mem.java:67)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:43)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 24, NodeMul, "*", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:956)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:68)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 200, NodeConstantRawBits, "{HWOffsetFix:10, 0, UNSIGNED}\n0x000; 0.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:585)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:67)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 22, NodeEq, "==", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:585)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:67)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 26, NodeStreamOffset, "stream offset: -16", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Stream.offset(Stream.java:245)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:69)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 11, NodeConstantRawBits, "{HWOffsetFix:4, 0, UNSIGNED}\n0x0; 0.0", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Constant.var(Constant.java:99)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:65)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 20, NodeConstantRawBits, "{HWOffsetFix:4, 0, UNSIGNED}\n0x1; 1.0", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Constant.var(Constant.java:99)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:65)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 152, NodeMappedRom, "MappedRom 'replicated_mem_0_mappedRomBiases':\n{HWFloat:8, 24} x 12", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Mem.alloc(Mem.java:67)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:47)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 23, NodeMux, "MUX", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.ternaryIf(DFEVar.java:1148)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:67)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 193, NodeFIFO, "FIFO(3)", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:357)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:42)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 25, NodeAdd, "+", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:864)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:68)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 124, NodeReinterpret, "<{HWRawBits:32}>", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:685)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:74)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 15, NodeMul, "*", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:956)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:68)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 199, NodeConstantRawBits, "{HWOffsetFix:10, 0, UNSIGNED}\n0x000; 0.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:585)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:67)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 13, NodeEq, "==", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:585)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:67)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 17, NodeStreamOffset, "stream offset: -16", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Stream.offset(Stream.java:245)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:69)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 14, NodeMux, "MUX", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.ternaryIf(DFEVar.java:1148)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:67)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 195, NodeFIFO, "FIFO(3)", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:357)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:42)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 16, NodeAdd, "+", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:864)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:68)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 123, NodeReinterpret, "<{HWRawBits:32}>", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:685)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:74)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 125, NodeCat, "@", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:685)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:74)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 127, NodeCat, "@", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:685)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:74)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 129, NodeCat, "@", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:685)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:74)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 131, NodeCat, "@", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:685)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:74)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 133, NodeCat, "@", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:685)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:74)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 135, NodeCat, "@", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:685)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:74)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 137, NodeCat, "@", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:685)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:74)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 139, NodeCat, "@", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:685)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:74)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 141, NodeCat, "@", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:685)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:74)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 143, NodeCat, "@", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:685)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:74)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 145, NodeCat, "@", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:685)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:74)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 122, NodeOutput, "Output(output)", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:685)\ndigitrecognition.DigitRecognitionKernel.<init>(DigitRecognitionKernel.maxj:74)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:34)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 162, NodeConstantRawBits, "{HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:357)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:42)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 198, NodeConstantRawBits, "{HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:357)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:42)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 159, NodeConstantRawBits, "{HWOffsetFix:49, 0, UNSIGNED}\n0x1000000000000; 2.81474976710656E14", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:357)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:42)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 160, NodeCounterV1, "Counter(NUMERIC_INCREMENTING)\nInc: 1\nReset: 0\nInit: 0", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:357)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:42)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 161, NodeStreamOffset, "stream offset: 1", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:357)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:42)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 163, NodeOutputMappedReg, "Scalar output (current_run_cycle_count)", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:357)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:42)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 197, NodeConstantRawBits, "{HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:357)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:42)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 165, NodeConstantRawBits, "{HWOffsetFix:49, 0, UNSIGNED}\n0x1000000000000; 2.81474976710656E14", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:357)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:42)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 166, NodeCounterV1, "Counter(NUMERIC_INCREMENTING)\nInc: 1\nReset: 0\nInit: 0", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:357)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:42)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 168, NodeInputMappedReg, "Scalar input (run_cycle_count)", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:357)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:42)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 169, NodeEq, "==", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:357)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:42)\n")
+PHOTON_NODE_DATA(DigitRecognitionKernel, 167, NodeFlush, "flush on trigger", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:357)\ndigitrecognition.DigitRecognitionManager.main(DigitRecognitionManager.maxj:42)\n")
+#endif
+
+#ifdef SLIC_USE_DEFINITIONS
+#include <stdio.h>
+#include <math.h>
+#include <pthread.h>
+#include <string.h>
+#include <unistd.h>
+#include <stdlib.h>
+static max_file_t *stored_maxfile = NULL;
+static max_engine_t *stored_engine = NULL;
+static char *stored_error = NULL;
+static int stored_has_error = 0;
+static pthread_once_t slic_bs_is_initialised = PTHREAD_ONCE_INIT;
+
+static void set_error(const char *error_str)
+{
+	stored_has_error = 1; 
+	if(stored_error == NULL) {
+		stored_error = strdup(error_str);
+	} else {
+		char *nerr = malloc(strlen(stored_error) + strlen(error_str) + 2);
+		sprintf(nerr, "%s\n%s", stored_error, error_str);
+		free(stored_error);
+		stored_error = nerr;
+	}
+}
+static void set_error_and_free(char *error_str){
+	set_error(error_str);
+	free(error_str);
+}
+int DigitRecognition_has_errors(void)
+{	return stored_has_error; }
+const char* DigitRecognition_get_errors(void)
+{	return stored_error; }
+void DigitRecognition_clear_errors(void)
+{
+	free(stored_error);
+	stored_error = NULL;
+	stored_has_error = 0;
+}
+
+static char DigitRecognition_use_simulation[16];
+static void DigitRecognition_def_use_simulation(void)
+{
+	long pid = ((long) getpid()) % 100000;
+	snprintf(DigitRecognition_use_simulation, 16, "DigitRec_%05ld_", pid);
+}
+static const char *DigitRecognition_check_use_simulation(void)
+{
+	DigitRecognition_def_use_simulation();
+	const char *use_sim = max_config_get_string(MAX_CONFIG_USE_SIMULATION);
+	if (use_sim == NULL) {
+		use_sim = DigitRecognition_use_simulation;
+		max_config_set_string(MAX_CONFIG_USE_SIMULATION, use_sim);
+	}
+	return use_sim;
+}
+
+static int DigitRecognition_simulation_launch = 0;
+int DigitRecognition_simulator_start(void)
+{
+	int retval = 0;
+	const char *use_sim = DigitRecognition_check_use_simulation();
+	char buff[1024];
+	snprintf(buff, 1024, "PATH=simutils:$PATH maxcompilersim -d 1 -n %s -c MAX3424A -S simutils restart", use_sim);
+	FILE *pipe_fp = popen(buff, "r");
+	if (pipe_fp == NULL) {
+		strncat(buff, " : failed to execute.", (1024 - strlen(buff)));
+		set_error(buff);
+		return -1;
+	}
+	while (fgets(buff, 1024, pipe_fp) != NULL) {
+		/* Uncomment this to get simulator command output */
+		/* fprintf(stderr, buff); */
+		if (strstr(buff, "Error")) {
+			set_error(buff);
+			retval = -1;
+		}
+	}
+	pclose(pipe_fp);
+	return retval;
+}
+
+int DigitRecognition_simulator_stop(void)
+{
+	const char *use_sim = DigitRecognition_check_use_simulation();
+	char buff[1024];
+	snprintf(buff, 1024, "PATH=simutils:$PATH maxcompilersim -d 1 -n %s -c MAX3424A -S simutils stop", use_sim);
+	FILE *pipe_fp = popen(buff, "r");
+	if (pipe_fp == NULL) {
+		strncat(buff, " : failed to execute.", (1024 - strlen(buff)));
+		set_error(buff);
+		return -1;
+	}
+	while (fgets(buff, 1024, pipe_fp) != NULL) {
+		/* Uncomment this to get simulator command output */
+		/* fprintf(stderr, buff); */
+		;
+	}
+	pclose(pipe_fp);
+	return 0;
+}
+
+static void DigitRecognition_static_init(void) 
+{
+	stored_maxfile = DigitRecognition_init();
+	if (stored_maxfile == NULL || !max_ok(stored_maxfile->errors)) {
+		stored_maxfile = NULL;
+		if(max_config_get_bool(MAX_CONFIG_STATIC_INTERFACE_ABORT_ON_ERROR)) abort();
+		else { set_error("Unable to load maxfile"); return; }
+	}
+	if(!max_ok(max_global_errors())) {
+		set_error_and_free(max_errors_trace(max_global_errors()));
+		return;
+	}
+	if(!max_config_get_bool(MAX_CONFIG_STATIC_INTERFACE_ABORT_ON_ERROR))
+		max_errors_mode(stored_maxfile->errors, 0);
+	time_t timeout_previous = max_load_timeout(stored_maxfile, 30);
+	const char *use_sim = DigitRecognition_check_use_simulation();
+	if (max_ping_daemon(stored_maxfile, use_sim) == 0) {
+		int sim_stat = DigitRecognition_simulator_start();
+		if ((sim_stat == 0) && (max_ping_daemon(stored_maxfile, use_sim) == 1)) {
+			DigitRecognition_simulation_launch = 1;
+		} else {
+			set_error("Error: An error occurred while trying to start the simulation infrastructure automatically.");
+			set_error("Error: Check that 'use_simulation=<simulator_name>' is set correctly in your SLiC configuration");
+			set_error("Error: and that the associated simulated system daemon is running.");
+			max_file_free(stored_maxfile);
+			stored_maxfile = NULL;
+			return;
+		}
+	}
+	stored_engine = max_load(stored_maxfile, "*");
+	if (!max_ok(stored_maxfile->errors)) {
+		if(max_config_get_bool(MAX_CONFIG_STATIC_INTERFACE_ABORT_ON_ERROR)) {
+			fprintf(stderr, "\nUnable to load engine: aborting now.\n\n");
+			fflush(stderr);
+			abort();
+		} else {
+			set_error_and_free(max_errors_trace(stored_maxfile->errors));
+			max_file_free(stored_maxfile);
+			stored_maxfile = NULL;
+			return;
+		} 
+	} 
+	max_load_timeout(stored_maxfile, timeout_previous);
+}
+void DigitRecognition_free(void)
+{
+	if (stored_engine != NULL) {
+		max_unload(stored_engine);
+		stored_engine = NULL;
+	}
+	if (stored_maxfile != NULL) {
+		max_file_free(stored_maxfile);
+		stored_maxfile = NULL;
+	}
+	if (stored_error != NULL) {
+		free(stored_error);
+		stored_error = NULL;
+	}
+	if (DigitRecognition_simulation_launch == 1) {
+		int sim_stat = DigitRecognition_simulator_stop();
+		if (sim_stat != 0 ) {
+			fprintf(stderr, "Error stopping simulator.");
+		}
+		DigitRecognition_simulation_launch = 0;
+	}
+}
+
+static int DigitRecognition_get_pcie_alignment(void)
+{
+#ifdef DigitRecognition_PCIE_ALIGNMENT
+	return ((DigitRecognition_PCIE_ALIGNMENT < 1) ? 16 : DigitRecognition_PCIE_ALIGNMENT);
+#else
+	return 16;
+#endif
+}
+
+static int DigitRecognition_check_aligned(const void *data)
+{
+	uintptr_t pointer = (uintptr_t) data;
+	int alignment = DigitRecognition_get_pcie_alignment();
+	return (pointer % alignment) ? 1 : 0;
+}
+
+static void *DigitRecognition_malloc_aligned(const size_t size)
+{
+	void *ptr;
+	int alignment = DigitRecognition_get_pcie_alignment();
+	posix_memalign(&ptr, alignment, size);
+	return ptr;
+}
+
+
+
+/*----------------------------------------------------------------------------*/
+/*---------------------------- Interface default -----------------------------*/
+/*----------------------------------------------------------------------------*/
+
+
+#define CHECK_ERRORS_ST(ST, RET) if(!max_ok(ST->errors)) { if(max_config_get_bool(MAX_CONFIG_STATIC_INTERFACE_ABORT_ON_ERROR)) { fprintf(stderr, "%s\n", max_errors_trace(ST->errors)); abort(); } set_error_and_free(max_errors_trace(ST->errors)); return RET; } 
+#define CHECK_NULL(VALUE, MESSAGE, RET) if(VALUE == NULL) { if (max_config_get_bool(MAX_CONFIG_STATIC_INTERFACE_ABORT_ON_ERROR)) { fprintf(stderr, "%s\n%s\n", (stored_error == NULL) ? "" : stored_error, MESSAGE); abort(); } set_error(MESSAGE); return RET; }
+
+ 
+typedef struct DigitRecognition_callback_stream {
+	uint8_t *user_ptr;
+	uint8_t *aligned_ptr;
+	size_t   size;
+	int      is_output;
+} DigitRecognition_callback_stream_t;
+
+typedef struct DigitRecognition_callback_data {
+	DigitRecognition_callback_stream_t stream[2]; 
+	int count;
+	int max_count;
+} DigitRecognition_callback_data_t;
+
+static void DigitRecognition_callback_internal(void *cb_data)
+{
+	DigitRecognition_callback_data_t *data = (DigitRecognition_callback_data_t*) cb_data;
+	for (int i = 0 ; i < data->count ; i++ ) {
+		DigitRecognition_callback_stream_t *s = &data->stream[i];
+		if (s->is_output && (s->size > 0)) {
+			memcpy(s->user_ptr, s->aligned_ptr, s->size);
+		}
+		free(s->aligned_ptr);
+	}
+	free(data);
+}
+
+static max_actions_t* DigitRecognition_convert_internal(
+	max_file_t *maxfile,
+	DigitRecognition_actions_t *interface_actions,
+	int  is_internal_call,
+	void (**callback_func)(void*),
+	void **callback_data)
+{
+	max_actions_t *actions = max_actions_init(maxfile, NULL);
+	if(actions == NULL) return NULL;
+
+#define CHECK_ERRORS if(!max_ok(actions->errors)) { set_error_and_free(max_errors_trace(actions->errors)); return NULL; } 
+
+	DigitRecognition_callback_data_t *cb_data = NULL;
+	int use_callback = (callback_func != NULL) && (callback_data != NULL);
+	if (use_callback) {
+		cb_data = malloc(sizeof(DigitRecognition_callback_data_t));
+		if (cb_data == NULL) {
+			fprintf(stderr, "Unable to allocate memory for stream callback data in function DigitRecognition_convert_internal\n");
+			return NULL;
+		}
+		cb_data->max_count = 2;
+		cb_data->count     = 0;
+		*callback_data     = cb_data;
+		*callback_func     = &DigitRecognition_callback_internal;
+	}
+
+	int64_t param_lengthIn = interface_actions->param_lengthIn;
+	
+	int64_t param_lengthOut = interface_actions->param_lengthOut;
+	
+
+	/* temporary variables */
+	int64_t tmp_0 = (param_lengthIn * 4);
+	int64_t tmp_1 = (param_lengthOut * 4);
+
+	/* code for scalar DigitRecognitionKernel.run_cycle_count */
+	uint64_t ticks_DigitRecognitionKernel = param_lengthIn;
+	max_set_ticks(actions, "DigitRecognitionKernel", param_lengthIn);
+	CHECK_ERRORS;
+	/* end of code for scalar DigitRecognitionKernel.run_cycle_count*/
+	
+	/* code for stream input */
+	size_t instream_size_input = tmp_0;
+	if (instream_size_input > 0) {
+		const float *stream_ptr = interface_actions->instream_input;
+		if (use_callback && (1 == DigitRecognition_check_aligned(interface_actions->instream_input))) {
+			float *aligned_instream_input = malloc(instream_size_input);
+			if (aligned_instream_input == NULL) {
+				max_report_error_slic(actions->errors, __FILE__, __LINE__, 526, "Failed to allocate aligned memory for stream 'input'");
+				CHECK_ERRORS;
+			}
+			(&cb_data->stream[cb_data->count])->user_ptr    = (uint8_t*) interface_actions->instream_input;
+			(&cb_data->stream[cb_data->count])->aligned_ptr = (uint8_t*) aligned_instream_input;
+			(&cb_data->stream[cb_data->count])->size        = instream_size_input;
+			(&cb_data->stream[cb_data->count])->is_output   = 0;
+			cb_data->count += 1;
+			memcpy(aligned_instream_input, interface_actions->instream_input, instream_size_input);
+			stream_ptr = aligned_instream_input;
+		}
+		max_queue_input(actions, "input", stream_ptr, instream_size_input);
+		CHECK_ERRORS;
+	}
+	/* end of code for stream input */
+	
+	/* code for stream output */
+	size_t outstream_size_output = tmp_1;
+	if (outstream_size_output > 0) {
+		float *stream_ptr = interface_actions->outstream_output;
+		if (use_callback && (1 == DigitRecognition_check_aligned(interface_actions->outstream_output))) {
+			float *aligned_outstream_output = malloc(outstream_size_output);
+			if (aligned_outstream_output == NULL) {
+				max_report_error_slic(actions->errors, __FILE__, __LINE__, 526, "Failed to allocate aligned memory for stream 'output'");
+				CHECK_ERRORS;
+			}
+			(&cb_data->stream[cb_data->count])->user_ptr    = (uint8_t*) interface_actions->outstream_output;
+			(&cb_data->stream[cb_data->count])->aligned_ptr = (uint8_t*) aligned_outstream_output;
+			(&cb_data->stream[cb_data->count])->size        = outstream_size_output;
+			(&cb_data->stream[cb_data->count])->is_output   = 1;
+			cb_data->count += 1;
+			stream_ptr = aligned_outstream_output;
+		}
+		max_queue_output(actions, "output", stream_ptr, outstream_size_output);
+		CHECK_ERRORS;
+	}
+	/* end of code for stream output */
+	
+	max_set_mem_range_double(actions, "DigitRecognitionKernel", "mappedRomBiases", 0, 12, interface_actions->inmem_DigitRecognitionKernel_mappedRomBiases);
+	CHECK_ERRORS;
+	
+	max_set_mem_range_double(actions, "DigitRecognitionKernel", "mappedRomWeights", 0, 9408, interface_actions->inmem_DigitRecognitionKernel_mappedRomWeights);
+	CHECK_ERRORS;
+	
+	if (use_callback && cb_data->count == 0) {
+		*callback_data = NULL;
+		*callback_func = NULL;
+		free(cb_data);
+	}
+	return actions;
+#undef CHECK_ERRORS
+}
+
+void DigitRecognition(
+	int64_t param_lengthIn,
+	int64_t param_lengthOut,
+	const float *instream_input,
+	float *outstream_output,
+	const double *inmem_DigitRecognitionKernel_mappedRomBiases,
+	const double *inmem_DigitRecognitionKernel_mappedRomWeights)
+{
+	(void) pthread_once(&slic_bs_is_initialised, DigitRecognition_static_init);
+	CHECK_NULL(stored_maxfile, "Maxfile was not loaded", );
+	max_run_t *run = DigitRecognition_nonblock(param_lengthIn, param_lengthOut, instream_input, outstream_output, inmem_DigitRecognitionKernel_mappedRomBiases, inmem_DigitRecognitionKernel_mappedRomWeights);
+	CHECK_NULL(run, "Unable to run actions", );
+	max_wait(run);
+}
+
+max_run_t *DigitRecognition_nonblock(
+	int64_t param_lengthIn,
+	int64_t param_lengthOut,
+	const float *instream_input,
+	float *outstream_output,
+	const double *inmem_DigitRecognitionKernel_mappedRomBiases,
+	const double *inmem_DigitRecognitionKernel_mappedRomWeights)
+{
+	DigitRecognition_actions_t interface_actions;
+	interface_actions.param_lengthIn = param_lengthIn;
+	interface_actions.param_lengthOut = param_lengthOut;
+	interface_actions.instream_input = instream_input;
+	interface_actions.outstream_output = outstream_output;
+	interface_actions.inmem_DigitRecognitionKernel_mappedRomBiases = inmem_DigitRecognitionKernel_mappedRomBiases;
+	interface_actions.inmem_DigitRecognitionKernel_mappedRomWeights = inmem_DigitRecognitionKernel_mappedRomWeights;
+	(void) pthread_once(&slic_bs_is_initialised, DigitRecognition_static_init);
+	CHECK_NULL(stored_maxfile, "Maxfile was not loaded", NULL);
+	void (*cb_func)(void*) = NULL;
+	void  *cb_data         = NULL;
+	max_actions_t *actions = DigitRecognition_convert_internal(stored_maxfile, &interface_actions, 1, &cb_func, &cb_data);
+	CHECK_NULL(actions, "Unable to build actions", NULL);
+	max_validate(actions);
+	CHECK_ERRORS_ST(actions, NULL);
+	CHECK_ERRORS_ST(stored_engine, NULL);
+	max_run_t *run;
+	if (cb_func == NULL) {
+		run = max_run_nonblock(stored_engine, actions);
+	} else {
+		run = max_run_nonblock_with_cb(stored_engine, actions, cb_func, cb_data);
+	}
+	CHECK_NULL(run, "Unable to run actions", NULL);
+	CHECK_ERRORS_ST(actions, NULL);
+	max_actions_free(actions);
+	return run;
+}
+
+void DigitRecognition_run(
+	max_engine_t *engine,
+	DigitRecognition_actions_t *interface_actions)
+{
+	max_run_t *run = DigitRecognition_run_nonblock(engine, interface_actions);
+	CHECK_NULL(run, "Unable to run actions", );
+	max_wait(run);
+}
+
+max_run_t *DigitRecognition_run_nonblock(
+	max_engine_t *engine,
+	DigitRecognition_actions_t *interface_actions)
+{
+	max_file_t *maxfile = max_engine_get_max_file(engine); 
+	void (*cb_func)(void*) = NULL;
+	void  *cb_data         = NULL;
+	max_actions_t *actions = DigitRecognition_convert_internal(maxfile, interface_actions, 1, &cb_func, &cb_data);
+	CHECK_ERRORS_ST(actions, NULL);
+	max_run_t *run;
+	if (cb_func == NULL) {
+		run = max_run_nonblock(engine, actions);
+	} else {
+		run = max_run_nonblock_with_cb(engine, actions, cb_func, cb_data);
+	}
+	CHECK_NULL(run, "Unable to run actions", NULL);
+	max_actions_free(actions);
+	return run;
+}
+
+
+/**
+ * \brief Group run advanced static function for the interface 'default'.
+ * 
+ * \param [in] group Group to use.
+ * \param [in,out] interface_actions Actions to run.
+ *
+ * Run the actions on the first device available in the group.
+ */
+void DigitRecognition_run_group(max_group_t *group, DigitRecognition_actions_t *interface_actions)
+{
+	max_run_t *run = DigitRecognition_run_group_nonblock(group, interface_actions);
+	CHECK_NULL(run, "Unable to run actions", );
+	max_wait(run);
+}
+
+
+/**
+ * \brief Group run advanced static non-blocking function for the interface 'default'.
+ * 
+ *
+ * Schedule the actions to run on the first device available in the group and return immediately.
+ * The status of the run must be checked with ::max_wait. 
+ * Note that use of ::max_nowait is prohibited with non-blocking running on groups:
+ * see the ::max_run_group_nonblock documentation for more explanation.
+ *
+ * \param [in] group Group to use.
+ * \param [in] interface_actions Actions to run.
+ * \return A handle on the execution status of the actions, or NULL in case of error.
+ */
+max_run_t *DigitRecognition_run_group_nonblock(max_group_t *group, DigitRecognition_actions_t *interface_actions)
+{
+	max_file_t *maxfile = max_group_get_max_file(group);
+	max_actions_t *actions = DigitRecognition_convert_internal(maxfile, interface_actions, 1, NULL, NULL);
+	if(actions == NULL) return NULL;
+	if(!max_ok(actions->errors)) return NULL;
+	max_validate(actions);
+	max_run_t *run = max_run_group_nonblock(group, actions);
+	max_actions_free(actions);
+	return run;
+}
+
+
+/**
+ * \brief Array run advanced static function for the interface 'default'.
+ * 
+ * \param [in] engarray The array of devices to use.
+ * \param [in,out] interface_actions The array of actions to run.
+ *
+ * Run the array of actions on the array of engines.  The length of interface_actions
+ * must match the size of engarray.
+ */
+void DigitRecognition_run_array(max_engarray_t *engarray, DigitRecognition_actions_t *interface_actions[])
+{
+	max_run_t *run = DigitRecognition_run_array_nonblock(engarray, interface_actions);
+	CHECK_NULL(run, "Unable to run actions", );
+	max_wait(run);
+}
+
+
+/**
+ * \brief Array run advanced static non-blocking function for the interface 'default'.
+ * 
+ *
+ * Schedule to run the array of actions on the array of engines, and return immediately.
+ * The length of interface_actions must match the size of engarray.
+ * The status of the run can be checked either by ::max_wait or ::max_nowait;
+ * note that one of these *must* be called, so that associated memory can be released.
+ *
+ * \param [in] engarray The array of devices to use.
+ * \param [in] interface_actions The array of actions to run.
+ * \return A handle on the execution status of the actions, or NULL in case of error.
+ */
+max_run_t *DigitRecognition_run_array_nonblock(max_engarray_t *engarray, DigitRecognition_actions_t *interface_actions[])
+{
+	max_file_t *maxfile = max_engarray_get_max_file(engarray, 0);
+	int i;
+	max_actarray_t *actarray = max_actarray_init(maxfile, engarray->size);
+	if (actarray == NULL) return NULL;
+	max_actions_t **arr_actions = malloc(engarray->size * sizeof(max_actions_t*));
+	for ( i = 0 ; i < actarray->size; i++ ) {
+		max_actions_t *actions = DigitRecognition_convert_internal(maxfile, interface_actions[i], 1, NULL, NULL);
+		if (actions == NULL) return NULL;
+		arr_actions[i] = actions;
+		max_set_action(actarray, i, actions);
+	}
+	max_run_t *run = max_run_array_nonblock(engarray, actarray);
+	for ( i = 0 ; i < actarray->size ; i++ ) { max_actions_free(arr_actions[i]); }
+	max_actarray_free(actarray);
+	free(arr_actions);
+	return run;
+}
+
+
+/**
+ * \brief Converts a static-interface action struct into a dynamic-interface max_actions_t struct.
+ *
+ * Note that this is an internal utility function used by other functions in the static interface.
+ *
+ * \param [in] maxfile The maxfile to use.
+ * \param [in] interface_actions The interface-specific actions to run.
+ * \return The dynamic-interface actions to run, or NULL in case of error.
+ */
+max_actions_t* DigitRecognition_convert(max_file_t *maxfile, DigitRecognition_actions_t *interface_actions)
+{
+	return DigitRecognition_convert_internal(maxfile, interface_actions, 0, NULL, NULL);
+}
+
+#undef CHECK_ERRORS_ST
+#undef CHECK_NULL
+
+
+
+#endif /* SLIC_USE_DEFINITIONS */
+
+#ifdef SLIC_DYNAMIC_CODE
+SLIC_MODE_START(default)	
+SLIC_PARAMETER_UINT64(int64_t, lengthIn, param_lengthIn)	
+SLIC_PARAMETER_UINT64(int64_t, lengthOut, param_lengthOut)	
+SLIC_TEMP_VAR(int64_t tmp_0 = (param_lengthIn * 4);)	
+SLIC_TEMP_VAR(int64_t tmp_1 = (param_lengthOut * 4);)	
+SLIC_SET_TICKS(DigitRecognitionKernel, param_lengthIn)	
+SLIC_STREAM(input, tmp_0)	
+SLIC_STREAM(output, tmp_1)	
+SLIC_MODE_END(default)
+
+#endif /* SLIC_DYNAMIC_CODE */
+
+#ifdef SKIN_META_DATA
+PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PG1h
+eGZpbGUgZm9ybWF0LXZlcnNpb249IjIwMTIwMjAwIiBoZWFkZXI9IkRpZ2l0UmVjb2duaXRpb24u
+aCIgbmFtZT0iRGlnaXRSZWNvZ25pdGlvbiI+PGNvbnN0YW50IG5hbWU9IlBDSUVfQUxJR05NRU5U
+IiB0eXBlPSJsb25nIiB2YWx1ZT0iMTYiLz48Y29uc3RhbnQgbmFtZT0iUkVGX05VTSIgdHlwZT0i
+bG9uZyIgdmFsdWU9IjEyIi8+PGNvbnN0YW50IG5hbWU9IlkiIHR5cGU9ImxvbmciIHZhbHVlPSIx
+MDAwMCIvPjxjb25zdGFudCBuYW1lPSJDRmFjdG9yIiB0eXBlPSJsb25nIiB2YWx1ZT0iMTYiLz48
+Y29uc3RhbnQgbmFtZT0iWCIgdHlwZT0ibG9uZyIgdmFsdWU9Ijc4NCIvPjxlbmdpbmVtb2RlIG5h
+bWU9ImRlZmF1bHQiPjxmdW5jdGlvbiBuYW1lPSJEaWdpdFJlY29nbml0aW9uIiByZXR1cm4tdmFs
+dWU9InZvaWQiPjxzY2FsYXIgZGVzYz0iSW50ZXJmYWNlIFBhcmFtZXRlciAmcXVvdDtsZW5ndGhJ
+biZxdW90Oy4iIGRpcmVjdGlvbj0iSW5wdXQiIG5hbWU9InBhcmFtX2xlbmd0aEluIiB0eXBlPSJp
+bnQ2NF90Ii8+PHNjYWxhciBkZXNjPSJJbnRlcmZhY2UgUGFyYW1ldGVyICZxdW90O2xlbmd0aE91
+dCZxdW90Oy4iIGRpcmVjdGlvbj0iSW5wdXQiIG5hbWU9InBhcmFtX2xlbmd0aE91dCIgdHlwZT0i
+aW50NjRfdCIvPjxhcnJheSBkZXNjPSJUaGUgc3RyZWFtIHNob3VsZCBiZSBvZiBzaXplIChwYXJh
+bV9sZW5ndGhJbiAqIDQpIGJ5dGVzLiIgZGlyZWN0aW9uPSJJbnB1dCIgbmFtZT0iaW5zdHJlYW1f
+aW5wdXQiIHNpemU9IihwYXJhbV9sZW5ndGhJbiAqIDQpIiB0cmFuc3Bvc2U9InRydWUiIHR5cGU9
+ImZsb2F0Ij48ZGltZW5zaW9uIGluZGV4PSIwIj48bGVuZ3RoPjxmdW5jdGlvbkNhbGw+PG51bUJp
+bmFyeU9wZXJhdG9yIG9wZXJhdG9yPSIvIiB2YWx1ZT0iKChwYXJhbV9sZW5ndGhJbiAqIDQpIC8g
+NCkiPjxmdW5jdGlvbkNhbGw+PG51bUJpbmFyeU9wZXJhdG9yIG9wZXJhdG9yPSIqIiB2YWx1ZT0i
+KHBhcmFtX2xlbmd0aEluICogNCkiPjx1c2VyUGFyYW0gdmFsdWU9InBhcmFtX2xlbmd0aEluIi8+
+PGNvbnN0YW50VmFsdWUgdmFsdWU9IjQiLz48L251bUJpbmFyeU9wZXJhdG9yPjwvZnVuY3Rpb25D
+YWxsPjxjb25zdGFudFZhbHVlIHZhbHVlPSI0Ii8+PC9udW1CaW5hcnlPcGVyYXRvcj48L2Z1bmN0
+aW9uQ2FsbD48L2xlbmd0aD48L2RpbWVuc2lvbj48L2FycmF5PjxhcnJheSBkZXNjPSJUaGUgc3Ry
+ZWFtIHNob3VsZCBiZSBvZiBzaXplIChwYXJhbV9sZW5ndGhPdXQgKiA0KSBieXRlcy4iIGRpcmVj
+dGlvbj0iT3V0cHV0IiBuYW1lPSJvdXRzdHJlYW1fb3V0cHV0IiBzaXplPSIocGFyYW1fbGVuZ3Ro
+T3V0ICogNCkiIHRyYW5zcG9zZT0idHJ1ZSIgdHlwZT0iZmxvYXQiPjxkaW1lbnNpb24gaW5kZXg9
+IjAiPjxsZW5ndGg+PGZ1bmN0aW9uQ2FsbD48bnVtQmluYXJ5T3BlcmF0b3Igb3BlcmF0b3I9Ii8i
+IHZhbHVlPSIoKHBhcmFtX2xlbmd0aE91dCAqIDQpIC8gNCkiPjxmdW5jdGlvbkNhbGw+PG51bUJp
+bmFyeU9wZXJhdG9yIG9wZXJhdG9yPSIqIiB2YWx1ZT0iKHBhcmFtX2xlbmd0aE91dCAqIDQpIj48
+dXNlclBhcmFtIHZhbHVlPSJwYXJhbV9sZW5ndGhPdXQiLz48Y29uc3RhbnRWYWx1ZSB2YWx1ZT0i
+NCIvPjwvbnVtQmluYXJ5T3BlcmF0b3I+PC9mdW5jdGlvbkNhbGw+PGNvbnN0YW50VmFsdWUgdmFs
+dWU9IjQiLz48L251bUJpbmFyeU9wZXJhdG9yPjwvZnVuY3Rpb25DYWxsPjwvbGVuZ3RoPjwvZGlt
+ZW5zaW9uPjwvYXJyYXk+PGFycmF5IGRlc2M9Ik1hcHBlZCBST00gaW5tZW1fRGlnaXRSZWNvZ25p
+dGlvbktlcm5lbF9tYXBwZWRSb21CaWFzZXMsIHNob3VsZCBiZSBvZiBzaXplICgxMiAqIHNpemVv
+Zihkb3VibGUpKS4iIGRpcmVjdGlvbj0iSW5wdXQiIG5hbWU9ImlubWVtX0RpZ2l0UmVjb2duaXRp
+b25LZXJuZWxfbWFwcGVkUm9tQmlhc2VzIiBzaXplPSI5NiIgdHJhbnNwb3NlPSJmYWxzZSIgdHlw
+ZT0iZG91YmxlIj48ZGltZW5zaW9uIGluZGV4PSIwIj48c2l6ZUV4cHJlc3Npb24gdmFsdWU9Iig5
+NikgLyA4Ii8+PC9kaW1lbnNpb24+PC9hcnJheT48YXJyYXkgZGVzYz0iTWFwcGVkIFJPTSBpbm1l
+bV9EaWdpdFJlY29nbml0aW9uS2VybmVsX21hcHBlZFJvbVdlaWdodHMsIHNob3VsZCBiZSBvZiBz
+aXplICg5NDA4ICogc2l6ZW9mKGRvdWJsZSkpLiIgZGlyZWN0aW9uPSJJbnB1dCIgbmFtZT0iaW5t
+ZW1fRGlnaXRSZWNvZ25pdGlvbktlcm5lbF9tYXBwZWRSb21XZWlnaHRzIiBzaXplPSI3NTI2NCIg
+dHJhbnNwb3NlPSJmYWxzZSIgdHlwZT0iZG91YmxlIj48ZGltZW5zaW9uIGluZGV4PSIwIj48c2l6
+ZUV4cHJlc3Npb24gdmFsdWU9Iig3NTI2NCkgLyA4Ii8+PC9kaW1lbnNpb24+PC9hcnJheT48L2Z1
+bmN0aW9uPjwvZW5naW5lbW9kZT48L21heGZpbGU+
+#endif /* SKIN_META_DATA */
+
+#ifdef SLIC_B64_DEFINITIONS
+I2luY2x1ZGUgPHN0ZGlvLmg+CiNpbmNsdWRlIDxtYXRoLmg+CiNpbmNsdWRlIDxwdGhyZWFkLmg+
+CiNpbmNsdWRlIDxzdHJpbmcuaD4KI2luY2x1ZGUgPHVuaXN0ZC5oPgojaW5jbHVkZSA8c3RkbGli
+Lmg+CnN0YXRpYyBtYXhfZmlsZV90ICpzdG9yZWRfbWF4ZmlsZSA9IE5VTEw7CnN0YXRpYyBtYXhf
+ZW5naW5lX3QgKnN0b3JlZF9lbmdpbmUgPSBOVUxMOwpzdGF0aWMgY2hhciAqc3RvcmVkX2Vycm9y
+ID0gTlVMTDsKc3RhdGljIGludCBzdG9yZWRfaGFzX2Vycm9yID0gMDsKc3RhdGljIHB0aHJlYWRf
+b25jZV90IHNsaWNfYnNfaXNfaW5pdGlhbGlzZWQgPSBQVEhSRUFEX09OQ0VfSU5JVDsKCnN0YXRp
+YyB2b2lkIHNldF9lcnJvcihjb25zdCBjaGFyICplcnJvcl9zdHIpCnsKCXN0b3JlZF9oYXNfZXJy
+b3IgPSAxOyAKCWlmKHN0b3JlZF9lcnJvciA9PSBOVUxMKSB7CgkJc3RvcmVkX2Vycm9yID0gc3Ry
+ZHVwKGVycm9yX3N0cik7Cgl9IGVsc2UgewoJCWNoYXIgKm5lcnIgPSBtYWxsb2Moc3RybGVuKHN0
+b3JlZF9lcnJvcikgKyBzdHJsZW4oZXJyb3Jfc3RyKSArIDIpOwoJCXNwcmludGYobmVyciwgIiVz
+XG4lcyIsIHN0b3JlZF9lcnJvciwgZXJyb3Jfc3RyKTsKCQlmcmVlKHN0b3JlZF9lcnJvcik7CgkJ
+c3RvcmVkX2Vycm9yID0gbmVycjsKCX0KfQpzdGF0aWMgdm9pZCBzZXRfZXJyb3JfYW5kX2ZyZWUo
+Y2hhciAqZXJyb3Jfc3RyKXsKCXNldF9lcnJvcihlcnJvcl9zdHIpOwoJZnJlZShlcnJvcl9zdHIp
+Owp9CmludCBEaWdpdFJlY29nbml0aW9uX2hhc19lcnJvcnModm9pZCkKewlyZXR1cm4gc3RvcmVk
+X2hhc19lcnJvcjsgfQpjb25zdCBjaGFyKiBEaWdpdFJlY29nbml0aW9uX2dldF9lcnJvcnModm9p
+ZCkKewlyZXR1cm4gc3RvcmVkX2Vycm9yOyB9CnZvaWQgRGlnaXRSZWNvZ25pdGlvbl9jbGVhcl9l
+cnJvcnModm9pZCkKewoJZnJlZShzdG9yZWRfZXJyb3IpOwoJc3RvcmVkX2Vycm9yID0gTlVMTDsK
+CXN0b3JlZF9oYXNfZXJyb3IgPSAwOwp9CgpzdGF0aWMgY2hhciBEaWdpdFJlY29nbml0aW9uX3Vz
+ZV9zaW11bGF0aW9uWzE2XTsKc3RhdGljIHZvaWQgRGlnaXRSZWNvZ25pdGlvbl9kZWZfdXNlX3Np
+bXVsYXRpb24odm9pZCkKewoJbG9uZyBwaWQgPSAoKGxvbmcpIGdldHBpZCgpKSAlIDEwMDAwMDsK
+CXNucHJpbnRmKERpZ2l0UmVjb2duaXRpb25fdXNlX3NpbXVsYXRpb24sIDE2LCAiRGlnaXRSZWNf
+JTA1bGRfIiwgcGlkKTsKfQpzdGF0aWMgY29uc3QgY2hhciAqRGlnaXRSZWNvZ25pdGlvbl9jaGVj
+a191c2Vfc2ltdWxhdGlvbih2b2lkKQp7CglEaWdpdFJlY29nbml0aW9uX2RlZl91c2Vfc2ltdWxh
+dGlvbigpOwoJY29uc3QgY2hhciAqdXNlX3NpbSA9IG1heF9jb25maWdfZ2V0X3N0cmluZyhNQVhf
+Q09ORklHX1VTRV9TSU1VTEFUSU9OKTsKCWlmICh1c2Vfc2ltID09IE5VTEwpIHsKCQl1c2Vfc2lt
+ID0gRGlnaXRSZWNvZ25pdGlvbl91c2Vfc2ltdWxhdGlvbjsKCQltYXhfY29uZmlnX3NldF9zdHJp
+bmcoTUFYX0NPTkZJR19VU0VfU0lNVUxBVElPTiwgdXNlX3NpbSk7Cgl9CglyZXR1cm4gdXNlX3Np
+bTsKfQoKc3RhdGljIGludCBEaWdpdFJlY29nbml0aW9uX3NpbXVsYXRpb25fbGF1bmNoID0gMDsK
+aW50IERpZ2l0UmVjb2duaXRpb25fc2ltdWxhdG9yX3N0YXJ0KHZvaWQpCnsKCWludCByZXR2YWwg
+PSAwOwoJY29uc3QgY2hhciAqdXNlX3NpbSA9IERpZ2l0UmVjb2duaXRpb25fY2hlY2tfdXNlX3Np
+bXVsYXRpb24oKTsKCWNoYXIgYnVmZlsxMDI0XTsKCXNucHJpbnRmKGJ1ZmYsIDEwMjQsICJQQVRI
+PXNpbXV0aWxzOiRQQVRIIG1heGNvbXBpbGVyc2ltIC1kIDEgLW4gJXMgLWMgTUFYMzQyNEEgLVMg
+c2ltdXRpbHMgcmVzdGFydCIsIHVzZV9zaW0pOwoJRklMRSAqcGlwZV9mcCA9IHBvcGVuKGJ1ZmYs
+ICJyIik7CglpZiAocGlwZV9mcCA9PSBOVUxMKSB7CgkJc3RybmNhdChidWZmLCAiIDogZmFpbGVk
+IHRvIGV4ZWN1dGUuIiwgKDEwMjQgLSBzdHJsZW4oYnVmZikpKTsKCQlzZXRfZXJyb3IoYnVmZik7
+CgkJcmV0dXJuIC0xOwoJfQoJd2hpbGUgKGZnZXRzKGJ1ZmYsIDEwMjQsIHBpcGVfZnApICE9IE5V
+TEwpIHsKCQkvKiBVbmNvbW1lbnQgdGhpcyB0byBnZXQgc2ltdWxhdG9yIGNvbW1hbmQgb3V0cHV0
+ICovCgkJLyogZnByaW50ZihzdGRlcnIsIGJ1ZmYpOyAqLwoJCWlmIChzdHJzdHIoYnVmZiwgIkVy
+cm9yIikpIHsKCQkJc2V0X2Vycm9yKGJ1ZmYpOwoJCQlyZXR2YWwgPSAtMTsKCQl9Cgl9CglwY2xv
+c2UocGlwZV9mcCk7CglyZXR1cm4gcmV0dmFsOwp9CgppbnQgRGlnaXRSZWNvZ25pdGlvbl9zaW11
+bGF0b3Jfc3RvcCh2b2lkKQp7Cgljb25zdCBjaGFyICp1c2Vfc2ltID0gRGlnaXRSZWNvZ25pdGlv
+bl9jaGVja191c2Vfc2ltdWxhdGlvbigpOwoJY2hhciBidWZmWzEwMjRdOwoJc25wcmludGYoYnVm
+ZiwgMTAyNCwgIlBBVEg9c2ltdXRpbHM6JFBBVEggbWF4Y29tcGlsZXJzaW0gLWQgMSAtbiAlcyAt
+YyBNQVgzNDI0QSAtUyBzaW11dGlscyBzdG9wIiwgdXNlX3NpbSk7CglGSUxFICpwaXBlX2ZwID0g
+cG9wZW4oYnVmZiwgInIiKTsKCWlmIChwaXBlX2ZwID09IE5VTEwpIHsKCQlzdHJuY2F0KGJ1ZmYs
+ICIgOiBmYWlsZWQgdG8gZXhlY3V0ZS4iLCAoMTAyNCAtIHN0cmxlbihidWZmKSkpOwoJCXNldF9l
+cnJvcihidWZmKTsKCQlyZXR1cm4gLTE7Cgl9Cgl3aGlsZSAoZmdldHMoYnVmZiwgMTAyNCwgcGlw
+ZV9mcCkgIT0gTlVMTCkgewoJCS8qIFVuY29tbWVudCB0aGlzIHRvIGdldCBzaW11bGF0b3IgY29t
+bWFuZCBvdXRwdXQgKi8KCQkvKiBmcHJpbnRmKHN0ZGVyciwgYnVmZik7ICovCgkJOwoJfQoJcGNs
+b3NlKHBpcGVfZnApOwoJcmV0dXJuIDA7Cn0KCnN0YXRpYyB2b2lkIERpZ2l0UmVjb2duaXRpb25f
+c3RhdGljX2luaXQodm9pZCkgCnsKCXN0b3JlZF9tYXhmaWxlID0gRGlnaXRSZWNvZ25pdGlvbl9p
+bml0KCk7CglpZiAoc3RvcmVkX21heGZpbGUgPT0gTlVMTCB8fCAhbWF4X29rKHN0b3JlZF9tYXhm
+aWxlLT5lcnJvcnMpKSB7CgkJc3RvcmVkX21heGZpbGUgPSBOVUxMOwoJCWlmKG1heF9jb25maWdf
+Z2V0X2Jvb2woTUFYX0NPTkZJR19TVEFUSUNfSU5URVJGQUNFX0FCT1JUX09OX0VSUk9SKSkgYWJv
+cnQoKTsKCQllbHNlIHsgc2V0X2Vycm9yKCJVbmFibGUgdG8gbG9hZCBtYXhmaWxlIik7IHJldHVy
+bjsgfQoJfQoJaWYoIW1heF9vayhtYXhfZ2xvYmFsX2Vycm9ycygpKSkgewoJCXNldF9lcnJvcl9h
+bmRfZnJlZShtYXhfZXJyb3JzX3RyYWNlKG1heF9nbG9iYWxfZXJyb3JzKCkpKTsKCQlyZXR1cm47
+Cgl9CglpZighbWF4X2NvbmZpZ19nZXRfYm9vbChNQVhfQ09ORklHX1NUQVRJQ19JTlRFUkZBQ0Vf
+QUJPUlRfT05fRVJST1IpKQoJCW1heF9lcnJvcnNfbW9kZShzdG9yZWRfbWF4ZmlsZS0+ZXJyb3Jz
+LCAwKTsKCXRpbWVfdCB0aW1lb3V0X3ByZXZpb3VzID0gbWF4X2xvYWRfdGltZW91dChzdG9yZWRf
+bWF4ZmlsZSwgMzApOwoJY29uc3QgY2hhciAqdXNlX3NpbSA9IERpZ2l0UmVjb2duaXRpb25fY2hl
+Y2tfdXNlX3NpbXVsYXRpb24oKTsKCWlmIChtYXhfcGluZ19kYWVtb24oc3RvcmVkX21heGZpbGUs
+IHVzZV9zaW0pID09IDApIHsKCQlpbnQgc2ltX3N0YXQgPSBEaWdpdFJlY29nbml0aW9uX3NpbXVs
+YXRvcl9zdGFydCgpOwoJCWlmICgoc2ltX3N0YXQgPT0gMCkgJiYgKG1heF9waW5nX2RhZW1vbihz
+dG9yZWRfbWF4ZmlsZSwgdXNlX3NpbSkgPT0gMSkpIHsKCQkJRGlnaXRSZWNvZ25pdGlvbl9zaW11
+bGF0aW9uX2xhdW5jaCA9IDE7CgkJfSBlbHNlIHsKCQkJc2V0X2Vycm9yKCJFcnJvcjogQW4gZXJy
+b3Igb2NjdXJyZWQgd2hpbGUgdHJ5aW5nIHRvIHN0YXJ0IHRoZSBzaW11bGF0aW9uIGluZnJhc3Ry
+dWN0dXJlIGF1dG9tYXRpY2FsbHkuIik7CgkJCXNldF9lcnJvcigiRXJyb3I6IENoZWNrIHRoYXQg
+J3VzZV9zaW11bGF0aW9uPTxzaW11bGF0b3JfbmFtZT4nIGlzIHNldCBjb3JyZWN0bHkgaW4geW91
+ciBTTGlDIGNvbmZpZ3VyYXRpb24iKTsKCQkJc2V0X2Vycm9yKCJFcnJvcjogYW5kIHRoYXQgdGhl
+IGFzc29jaWF0ZWQgc2ltdWxhdGVkIHN5c3RlbSBkYWVtb24gaXMgcnVubmluZy4iKTsKCQkJbWF4
+X2ZpbGVfZnJlZShzdG9yZWRfbWF4ZmlsZSk7CgkJCXN0b3JlZF9tYXhmaWxlID0gTlVMTDsKCQkJ
+cmV0dXJuOwoJCX0KCX0KCXN0b3JlZF9lbmdpbmUgPSBtYXhfbG9hZChzdG9yZWRfbWF4ZmlsZSwg
+IioiKTsKCWlmICghbWF4X29rKHN0b3JlZF9tYXhmaWxlLT5lcnJvcnMpKSB7CgkJaWYobWF4X2Nv
+bmZpZ19nZXRfYm9vbChNQVhfQ09ORklHX1NUQVRJQ19JTlRFUkZBQ0VfQUJPUlRfT05fRVJST1Ip
+KSB7CgkJCWZwcmludGYoc3RkZXJyLCAiXG5VbmFibGUgdG8gbG9hZCBlbmdpbmU6IGFib3J0aW5n
+IG5vdy5cblxuIik7CgkJCWZmbHVzaChzdGRlcnIpOwoJCQlhYm9ydCgpOwoJCX0gZWxzZSB7CgkJ
+CXNldF9lcnJvcl9hbmRfZnJlZShtYXhfZXJyb3JzX3RyYWNlKHN0b3JlZF9tYXhmaWxlLT5lcnJv
+cnMpKTsKCQkJbWF4X2ZpbGVfZnJlZShzdG9yZWRfbWF4ZmlsZSk7CgkJCXN0b3JlZF9tYXhmaWxl
+ID0gTlVMTDsKCQkJcmV0dXJuOwoJCX0gCgl9IAoJbWF4X2xvYWRfdGltZW91dChzdG9yZWRfbWF4
+ZmlsZSwgdGltZW91dF9wcmV2aW91cyk7Cn0Kdm9pZCBEaWdpdFJlY29nbml0aW9uX2ZyZWUodm9p
+ZCkKewoJaWYgKHN0b3JlZF9lbmdpbmUgIT0gTlVMTCkgewoJCW1heF91bmxvYWQoc3RvcmVkX2Vu
+Z2luZSk7CgkJc3RvcmVkX2VuZ2luZSA9IE5VTEw7Cgl9CglpZiAoc3RvcmVkX21heGZpbGUgIT0g
+TlVMTCkgewoJCW1heF9maWxlX2ZyZWUoc3RvcmVkX21heGZpbGUpOwoJCXN0b3JlZF9tYXhmaWxl
+ID0gTlVMTDsKCX0KCWlmIChzdG9yZWRfZXJyb3IgIT0gTlVMTCkgewoJCWZyZWUoc3RvcmVkX2Vy
+cm9yKTsKCQlzdG9yZWRfZXJyb3IgPSBOVUxMOwoJfQoJaWYgKERpZ2l0UmVjb2duaXRpb25fc2lt
+dWxhdGlvbl9sYXVuY2ggPT0gMSkgewoJCWludCBzaW1fc3RhdCA9IERpZ2l0UmVjb2duaXRpb25f
+c2ltdWxhdG9yX3N0b3AoKTsKCQlpZiAoc2ltX3N0YXQgIT0gMCApIHsKCQkJZnByaW50ZihzdGRl
+cnIsICJFcnJvciBzdG9wcGluZyBzaW11bGF0b3IuIik7CgkJfQoJCURpZ2l0UmVjb2duaXRpb25f
+c2ltdWxhdGlvbl9sYXVuY2ggPSAwOwoJfQp9CgpzdGF0aWMgaW50IERpZ2l0UmVjb2duaXRpb25f
+Z2V0X3BjaWVfYWxpZ25tZW50KHZvaWQpCnsKI2lmZGVmIERpZ2l0UmVjb2duaXRpb25fUENJRV9B
+TElHTk1FTlQKCXJldHVybiAoKERpZ2l0UmVjb2duaXRpb25fUENJRV9BTElHTk1FTlQgPCAxKSA/
+IDE2IDogRGlnaXRSZWNvZ25pdGlvbl9QQ0lFX0FMSUdOTUVOVCk7CiNlbHNlCglyZXR1cm4gMTY7
+CiNlbmRpZgp9CgpzdGF0aWMgaW50IERpZ2l0UmVjb2duaXRpb25fY2hlY2tfYWxpZ25lZChjb25z
+dCB2b2lkICpkYXRhKQp7Cgl1aW50cHRyX3QgcG9pbnRlciA9ICh1aW50cHRyX3QpIGRhdGE7Cglp
+bnQgYWxpZ25tZW50ID0gRGlnaXRSZWNvZ25pdGlvbl9nZXRfcGNpZV9hbGlnbm1lbnQoKTsKCXJl
+dHVybiAocG9pbnRlciAlIGFsaWdubWVudCkgPyAxIDogMDsKfQoKc3RhdGljIHZvaWQgKkRpZ2l0
+UmVjb2duaXRpb25fbWFsbG9jX2FsaWduZWQoY29uc3Qgc2l6ZV90IHNpemUpCnsKCXZvaWQgKnB0
+cjsKCWludCBhbGlnbm1lbnQgPSBEaWdpdFJlY29nbml0aW9uX2dldF9wY2llX2FsaWdubWVudCgp
+OwoJcG9zaXhfbWVtYWxpZ24oJnB0ciwgYWxpZ25tZW50LCBzaXplKTsKCXJldHVybiBwdHI7Cn0K
+CgoKLyotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tKi8KLyotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+IEludGVyZmFjZSBkZWZhdWx0IC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tKi8KLyotLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tKi8KCgojZGVmaW5lIENIRUNLX0VSUk9SU19TVChTVCwgUkVUKSBpZigh
+bWF4X29rKFNULT5lcnJvcnMpKSB7IGlmKG1heF9jb25maWdfZ2V0X2Jvb2woTUFYX0NPTkZJR19T
+VEFUSUNfSU5URVJGQUNFX0FCT1JUX09OX0VSUk9SKSkgeyBmcHJpbnRmKHN0ZGVyciwgIiVzXG4i
+LCBtYXhfZXJyb3JzX3RyYWNlKFNULT5lcnJvcnMpKTsgYWJvcnQoKTsgfSBzZXRfZXJyb3JfYW5k
+X2ZyZWUobWF4X2Vycm9yc190cmFjZShTVC0+ZXJyb3JzKSk7IHJldHVybiBSRVQ7IH0gCiNkZWZp
+bmUgQ0hFQ0tfTlVMTChWQUxVRSwgTUVTU0FHRSwgUkVUKSBpZihWQUxVRSA9PSBOVUxMKSB7IGlm
+IChtYXhfY29uZmlnX2dldF9ib29sKE1BWF9DT05GSUdfU1RBVElDX0lOVEVSRkFDRV9BQk9SVF9P
+Tl9FUlJPUikpIHsgZnByaW50ZihzdGRlcnIsICIlc1xuJXNcbiIsIChzdG9yZWRfZXJyb3IgPT0g
+TlVMTCkgPyAiIiA6IHN0b3JlZF9lcnJvciwgTUVTU0FHRSk7IGFib3J0KCk7IH0gc2V0X2Vycm9y
+KE1FU1NBR0UpOyByZXR1cm4gUkVUOyB9CgogCnR5cGVkZWYgc3RydWN0IERpZ2l0UmVjb2duaXRp
+b25fY2FsbGJhY2tfc3RyZWFtIHsKCXVpbnQ4X3QgKnVzZXJfcHRyOwoJdWludDhfdCAqYWxpZ25l
+ZF9wdHI7CglzaXplX3QgICBzaXplOwoJaW50ICAgICAgaXNfb3V0cHV0Owp9IERpZ2l0UmVjb2du
+aXRpb25fY2FsbGJhY2tfc3RyZWFtX3Q7Cgp0eXBlZGVmIHN0cnVjdCBEaWdpdFJlY29nbml0aW9u
+X2NhbGxiYWNrX2RhdGEgewoJRGlnaXRSZWNvZ25pdGlvbl9jYWxsYmFja19zdHJlYW1fdCBzdHJl
+YW1bMl07IAoJaW50IGNvdW50OwoJaW50IG1heF9jb3VudDsKfSBEaWdpdFJlY29nbml0aW9uX2Nh
+bGxiYWNrX2RhdGFfdDsKCnN0YXRpYyB2b2lkIERpZ2l0UmVjb2duaXRpb25fY2FsbGJhY2tfaW50
+ZXJuYWwodm9pZCAqY2JfZGF0YSkKewoJRGlnaXRSZWNvZ25pdGlvbl9jYWxsYmFja19kYXRhX3Qg
+KmRhdGEgPSAoRGlnaXRSZWNvZ25pdGlvbl9jYWxsYmFja19kYXRhX3QqKSBjYl9kYXRhOwoJZm9y
+IChpbnQgaSA9IDAgOyBpIDwgZGF0YS0+Y291bnQgOyBpKysgKSB7CgkJRGlnaXRSZWNvZ25pdGlv
+bl9jYWxsYmFja19zdHJlYW1fdCAqcyA9ICZkYXRhLT5zdHJlYW1baV07CgkJaWYgKHMtPmlzX291
+dHB1dCAmJiAocy0+c2l6ZSA+IDApKSB7CgkJCW1lbWNweShzLT51c2VyX3B0ciwgcy0+YWxpZ25l
+ZF9wdHIsIHMtPnNpemUpOwoJCX0KCQlmcmVlKHMtPmFsaWduZWRfcHRyKTsKCX0KCWZyZWUoZGF0
+YSk7Cn0KCnN0YXRpYyBtYXhfYWN0aW9uc190KiBEaWdpdFJlY29nbml0aW9uX2NvbnZlcnRfaW50
+ZXJuYWwoCgltYXhfZmlsZV90ICptYXhmaWxlLAoJRGlnaXRSZWNvZ25pdGlvbl9hY3Rpb25zX3Qg
+KmludGVyZmFjZV9hY3Rpb25zLAoJaW50ICBpc19pbnRlcm5hbF9jYWxsLAoJdm9pZCAoKipjYWxs
+YmFja19mdW5jKSh2b2lkKiksCgl2b2lkICoqY2FsbGJhY2tfZGF0YSkKewoJbWF4X2FjdGlvbnNf
+dCAqYWN0aW9ucyA9IG1heF9hY3Rpb25zX2luaXQobWF4ZmlsZSwgTlVMTCk7CglpZihhY3Rpb25z
+ID09IE5VTEwpIHJldHVybiBOVUxMOwoKI2RlZmluZSBDSEVDS19FUlJPUlMgaWYoIW1heF9vayhh
+Y3Rpb25zLT5lcnJvcnMpKSB7IHNldF9lcnJvcl9hbmRfZnJlZShtYXhfZXJyb3JzX3RyYWNlKGFj
+dGlvbnMtPmVycm9ycykpOyByZXR1cm4gTlVMTDsgfSAKCglEaWdpdFJlY29nbml0aW9uX2NhbGxi
+YWNrX2RhdGFfdCAqY2JfZGF0YSA9IE5VTEw7CglpbnQgdXNlX2NhbGxiYWNrID0gKGNhbGxiYWNr
+X2Z1bmMgIT0gTlVMTCkgJiYgKGNhbGxiYWNrX2RhdGEgIT0gTlVMTCk7CglpZiAodXNlX2NhbGxi
+YWNrKSB7CgkJY2JfZGF0YSA9IG1hbGxvYyhzaXplb2YoRGlnaXRSZWNvZ25pdGlvbl9jYWxsYmFj
+a19kYXRhX3QpKTsKCQlpZiAoY2JfZGF0YSA9PSBOVUxMKSB7CgkJCWZwcmludGYoc3RkZXJyLCAi
+VW5hYmxlIHRvIGFsbG9jYXRlIG1lbW9yeSBmb3Igc3RyZWFtIGNhbGxiYWNrIGRhdGEgaW4gZnVu
+Y3Rpb24gRGlnaXRSZWNvZ25pdGlvbl9jb252ZXJ0X2ludGVybmFsXG4iKTsKCQkJcmV0dXJuIE5V
+TEw7CgkJfQoJCWNiX2RhdGEtPm1heF9jb3VudCA9IDI7CgkJY2JfZGF0YS0+Y291bnQgICAgID0g
+MDsKCQkqY2FsbGJhY2tfZGF0YSAgICAgPSBjYl9kYXRhOwoJCSpjYWxsYmFja19mdW5jICAgICA9
+ICZEaWdpdFJlY29nbml0aW9uX2NhbGxiYWNrX2ludGVybmFsOwoJfQoKCWludDY0X3QgcGFyYW1f
+bGVuZ3RoSW4gPSBpbnRlcmZhY2VfYWN0aW9ucy0+cGFyYW1fbGVuZ3RoSW47CgkKCWludDY0X3Qg
+cGFyYW1fbGVuZ3RoT3V0ID0gaW50ZXJmYWNlX2FjdGlvbnMtPnBhcmFtX2xlbmd0aE91dDsKCQoK
+CS8qIHRlbXBvcmFyeSB2YXJpYWJsZXMgKi8KCWludDY0X3QgdG1wXzAgPSAocGFyYW1fbGVuZ3Ro
+SW4gKiA0KTsKCWludDY0X3QgdG1wXzEgPSAocGFyYW1fbGVuZ3RoT3V0ICogNCk7CgoJLyogY29k
+ZSBmb3Igc2NhbGFyIERpZ2l0UmVjb2duaXRpb25LZXJuZWwucnVuX2N5Y2xlX2NvdW50ICovCgl1
+aW50NjRfdCB0aWNrc19EaWdpdFJlY29nbml0aW9uS2VybmVsID0gcGFyYW1fbGVuZ3RoSW47Cglt
+YXhfc2V0X3RpY2tzKGFjdGlvbnMsICJEaWdpdFJlY29nbml0aW9uS2VybmVsIiwgcGFyYW1fbGVu
+Z3RoSW4pOwoJQ0hFQ0tfRVJST1JTOwoJLyogZW5kIG9mIGNvZGUgZm9yIHNjYWxhciBEaWdpdFJl
+Y29nbml0aW9uS2VybmVsLnJ1bl9jeWNsZV9jb3VudCovCgkKCS8qIGNvZGUgZm9yIHN0cmVhbSBp
+bnB1dCAqLwoJc2l6ZV90IGluc3RyZWFtX3NpemVfaW5wdXQgPSB0bXBfMDsKCWlmIChpbnN0cmVh
+bV9zaXplX2lucHV0ID4gMCkgewoJCWNvbnN0IGZsb2F0ICpzdHJlYW1fcHRyID0gaW50ZXJmYWNl
+X2FjdGlvbnMtPmluc3RyZWFtX2lucHV0OwoJCWlmICh1c2VfY2FsbGJhY2sgJiYgKDEgPT0gRGln
+aXRSZWNvZ25pdGlvbl9jaGVja19hbGlnbmVkKGludGVyZmFjZV9hY3Rpb25zLT5pbnN0cmVhbV9p
+bnB1dCkpKSB7CgkJCWZsb2F0ICphbGlnbmVkX2luc3RyZWFtX2lucHV0ID0gbWFsbG9jKGluc3Ry
+ZWFtX3NpemVfaW5wdXQpOwoJCQlpZiAoYWxpZ25lZF9pbnN0cmVhbV9pbnB1dCA9PSBOVUxMKSB7
+CgkJCQltYXhfcmVwb3J0X2Vycm9yX3NsaWMoYWN0aW9ucy0+ZXJyb3JzLCBfX0ZJTEVfXywgX19M
+SU5FX18sIDUyNiwgIkZhaWxlZCB0byBhbGxvY2F0ZSBhbGlnbmVkIG1lbW9yeSBmb3Igc3RyZWFt
+ICdpbnB1dCciKTsKCQkJCUNIRUNLX0VSUk9SUzsKCQkJfQoJCQkoJmNiX2RhdGEtPnN0cmVhbVtj
+Yl9kYXRhLT5jb3VudF0pLT51c2VyX3B0ciAgICA9ICh1aW50OF90KikgaW50ZXJmYWNlX2FjdGlv
+bnMtPmluc3RyZWFtX2lucHV0OwoJCQkoJmNiX2RhdGEtPnN0cmVhbVtjYl9kYXRhLT5jb3VudF0p
+LT5hbGlnbmVkX3B0ciA9ICh1aW50OF90KikgYWxpZ25lZF9pbnN0cmVhbV9pbnB1dDsKCQkJKCZj
+Yl9kYXRhLT5zdHJlYW1bY2JfZGF0YS0+Y291bnRdKS0+c2l6ZSAgICAgICAgPSBpbnN0cmVhbV9z
+aXplX2lucHV0OwoJCQkoJmNiX2RhdGEtPnN0cmVhbVtjYl9kYXRhLT5jb3VudF0pLT5pc19vdXRw
+dXQgICA9IDA7CgkJCWNiX2RhdGEtPmNvdW50ICs9IDE7CgkJCW1lbWNweShhbGlnbmVkX2luc3Ry
+ZWFtX2lucHV0LCBpbnRlcmZhY2VfYWN0aW9ucy0+aW5zdHJlYW1faW5wdXQsIGluc3RyZWFtX3Np
+emVfaW5wdXQpOwoJCQlzdHJlYW1fcHRyID0gYWxpZ25lZF9pbnN0cmVhbV9pbnB1dDsKCQl9CgkJ
+bWF4X3F1ZXVlX2lucHV0KGFjdGlvbnMsICJpbnB1dCIsIHN0cmVhbV9wdHIsIGluc3RyZWFtX3Np
+emVfaW5wdXQpOwoJCUNIRUNLX0VSUk9SUzsKCX0KCS8qIGVuZCBvZiBjb2RlIGZvciBzdHJlYW0g
+aW5wdXQgKi8KCQoJLyogY29kZSBmb3Igc3RyZWFtIG91dHB1dCAqLwoJc2l6ZV90IG91dHN0cmVh
+bV9zaXplX291dHB1dCA9IHRtcF8xOwoJaWYgKG91dHN0cmVhbV9zaXplX291dHB1dCA+IDApIHsK
+CQlmbG9hdCAqc3RyZWFtX3B0ciA9IGludGVyZmFjZV9hY3Rpb25zLT5vdXRzdHJlYW1fb3V0cHV0
+OwoJCWlmICh1c2VfY2FsbGJhY2sgJiYgKDEgPT0gRGlnaXRSZWNvZ25pdGlvbl9jaGVja19hbGln
+bmVkKGludGVyZmFjZV9hY3Rpb25zLT5vdXRzdHJlYW1fb3V0cHV0KSkpIHsKCQkJZmxvYXQgKmFs
+aWduZWRfb3V0c3RyZWFtX291dHB1dCA9IG1hbGxvYyhvdXRzdHJlYW1fc2l6ZV9vdXRwdXQpOwoJ
+CQlpZiAoYWxpZ25lZF9vdXRzdHJlYW1fb3V0cHV0ID09IE5VTEwpIHsKCQkJCW1heF9yZXBvcnRf
+ZXJyb3Jfc2xpYyhhY3Rpb25zLT5lcnJvcnMsIF9fRklMRV9fLCBfX0xJTkVfXywgNTI2LCAiRmFp
+bGVkIHRvIGFsbG9jYXRlIGFsaWduZWQgbWVtb3J5IGZvciBzdHJlYW0gJ291dHB1dCciKTsKCQkJ
+CUNIRUNLX0VSUk9SUzsKCQkJfQoJCQkoJmNiX2RhdGEtPnN0cmVhbVtjYl9kYXRhLT5jb3VudF0p
+LT51c2VyX3B0ciAgICA9ICh1aW50OF90KikgaW50ZXJmYWNlX2FjdGlvbnMtPm91dHN0cmVhbV9v
+dXRwdXQ7CgkJCSgmY2JfZGF0YS0+c3RyZWFtW2NiX2RhdGEtPmNvdW50XSktPmFsaWduZWRfcHRy
+ID0gKHVpbnQ4X3QqKSBhbGlnbmVkX291dHN0cmVhbV9vdXRwdXQ7CgkJCSgmY2JfZGF0YS0+c3Ry
+ZWFtW2NiX2RhdGEtPmNvdW50XSktPnNpemUgICAgICAgID0gb3V0c3RyZWFtX3NpemVfb3V0cHV0
+OwoJCQkoJmNiX2RhdGEtPnN0cmVhbVtjYl9kYXRhLT5jb3VudF0pLT5pc19vdXRwdXQgICA9IDE7
+CgkJCWNiX2RhdGEtPmNvdW50ICs9IDE7CgkJCXN0cmVhbV9wdHIgPSBhbGlnbmVkX291dHN0cmVh
+bV9vdXRwdXQ7CgkJfQoJCW1heF9xdWV1ZV9vdXRwdXQoYWN0aW9ucywgIm91dHB1dCIsIHN0cmVh
+bV9wdHIsIG91dHN0cmVhbV9zaXplX291dHB1dCk7CgkJQ0hFQ0tfRVJST1JTOwoJfQoJLyogZW5k
+IG9mIGNvZGUgZm9yIHN0cmVhbSBvdXRwdXQgKi8KCQoJbWF4X3NldF9tZW1fcmFuZ2VfZG91Ymxl
+KGFjdGlvbnMsICJEaWdpdFJlY29nbml0aW9uS2VybmVsIiwgIm1hcHBlZFJvbUJpYXNlcyIsIDAs
+IDEyLCBpbnRlcmZhY2VfYWN0aW9ucy0+aW5tZW1fRGlnaXRSZWNvZ25pdGlvbktlcm5lbF9tYXBw
+ZWRSb21CaWFzZXMpOwoJQ0hFQ0tfRVJST1JTOwoJCgltYXhfc2V0X21lbV9yYW5nZV9kb3VibGUo
+YWN0aW9ucywgIkRpZ2l0UmVjb2duaXRpb25LZXJuZWwiLCAibWFwcGVkUm9tV2VpZ2h0cyIsIDAs
+IDk0MDgsIGludGVyZmFjZV9hY3Rpb25zLT5pbm1lbV9EaWdpdFJlY29nbml0aW9uS2VybmVsX21h
+cHBlZFJvbVdlaWdodHMpOwoJQ0hFQ0tfRVJST1JTOwoJCglpZiAodXNlX2NhbGxiYWNrICYmIGNi
+X2RhdGEtPmNvdW50ID09IDApIHsKCQkqY2FsbGJhY2tfZGF0YSA9IE5VTEw7CgkJKmNhbGxiYWNr
+X2Z1bmMgPSBOVUxMOwoJCWZyZWUoY2JfZGF0YSk7Cgl9CglyZXR1cm4gYWN0aW9uczsKI3VuZGVm
+IENIRUNLX0VSUk9SUwp9Cgp2b2lkIERpZ2l0UmVjb2duaXRpb24oCglpbnQ2NF90IHBhcmFtX2xl
+bmd0aEluLAoJaW50NjRfdCBwYXJhbV9sZW5ndGhPdXQsCgljb25zdCBmbG9hdCAqaW5zdHJlYW1f
+aW5wdXQsCglmbG9hdCAqb3V0c3RyZWFtX291dHB1dCwKCWNvbnN0IGRvdWJsZSAqaW5tZW1fRGln
+aXRSZWNvZ25pdGlvbktlcm5lbF9tYXBwZWRSb21CaWFzZXMsCgljb25zdCBkb3VibGUgKmlubWVt
+X0RpZ2l0UmVjb2duaXRpb25LZXJuZWxfbWFwcGVkUm9tV2VpZ2h0cykKewoJKHZvaWQpIHB0aHJl
+YWRfb25jZSgmc2xpY19ic19pc19pbml0aWFsaXNlZCwgRGlnaXRSZWNvZ25pdGlvbl9zdGF0aWNf
+aW5pdCk7CglDSEVDS19OVUxMKHN0b3JlZF9tYXhmaWxlLCAiTWF4ZmlsZSB3YXMgbm90IGxvYWRl
+ZCIsICk7CgltYXhfcnVuX3QgKnJ1biA9IERpZ2l0UmVjb2duaXRpb25fbm9uYmxvY2socGFyYW1f
+bGVuZ3RoSW4sIHBhcmFtX2xlbmd0aE91dCwgaW5zdHJlYW1faW5wdXQsIG91dHN0cmVhbV9vdXRw
+dXQsIGlubWVtX0RpZ2l0UmVjb2duaXRpb25LZXJuZWxfbWFwcGVkUm9tQmlhc2VzLCBpbm1lbV9E
+aWdpdFJlY29nbml0aW9uS2VybmVsX21hcHBlZFJvbVdlaWdodHMpOwoJQ0hFQ0tfTlVMTChydW4s
+ICJVbmFibGUgdG8gcnVuIGFjdGlvbnMiLCApOwoJbWF4X3dhaXQocnVuKTsKfQoKbWF4X3J1bl90
+ICpEaWdpdFJlY29nbml0aW9uX25vbmJsb2NrKAoJaW50NjRfdCBwYXJhbV9sZW5ndGhJbiwKCWlu
+dDY0X3QgcGFyYW1fbGVuZ3RoT3V0LAoJY29uc3QgZmxvYXQgKmluc3RyZWFtX2lucHV0LAoJZmxv
+YXQgKm91dHN0cmVhbV9vdXRwdXQsCgljb25zdCBkb3VibGUgKmlubWVtX0RpZ2l0UmVjb2duaXRp
+b25LZXJuZWxfbWFwcGVkUm9tQmlhc2VzLAoJY29uc3QgZG91YmxlICppbm1lbV9EaWdpdFJlY29n
+bml0aW9uS2VybmVsX21hcHBlZFJvbVdlaWdodHMpCnsKCURpZ2l0UmVjb2duaXRpb25fYWN0aW9u
+c190IGludGVyZmFjZV9hY3Rpb25zOwoJaW50ZXJmYWNlX2FjdGlvbnMucGFyYW1fbGVuZ3RoSW4g
+PSBwYXJhbV9sZW5ndGhJbjsKCWludGVyZmFjZV9hY3Rpb25zLnBhcmFtX2xlbmd0aE91dCA9IHBh
+cmFtX2xlbmd0aE91dDsKCWludGVyZmFjZV9hY3Rpb25zLmluc3RyZWFtX2lucHV0ID0gaW5zdHJl
+YW1faW5wdXQ7CglpbnRlcmZhY2VfYWN0aW9ucy5vdXRzdHJlYW1fb3V0cHV0ID0gb3V0c3RyZWFt
+X291dHB1dDsKCWludGVyZmFjZV9hY3Rpb25zLmlubWVtX0RpZ2l0UmVjb2duaXRpb25LZXJuZWxf
+bWFwcGVkUm9tQmlhc2VzID0gaW5tZW1fRGlnaXRSZWNvZ25pdGlvbktlcm5lbF9tYXBwZWRSb21C
+aWFzZXM7CglpbnRlcmZhY2VfYWN0aW9ucy5pbm1lbV9EaWdpdFJlY29nbml0aW9uS2VybmVsX21h
+cHBlZFJvbVdlaWdodHMgPSBpbm1lbV9EaWdpdFJlY29nbml0aW9uS2VybmVsX21hcHBlZFJvbVdl
+aWdodHM7Cgkodm9pZCkgcHRocmVhZF9vbmNlKCZzbGljX2JzX2lzX2luaXRpYWxpc2VkLCBEaWdp
+dFJlY29nbml0aW9uX3N0YXRpY19pbml0KTsKCUNIRUNLX05VTEwoc3RvcmVkX21heGZpbGUsICJN
+YXhmaWxlIHdhcyBub3QgbG9hZGVkIiwgTlVMTCk7Cgl2b2lkICgqY2JfZnVuYykodm9pZCopID0g
+TlVMTDsKCXZvaWQgICpjYl9kYXRhICAgICAgICAgPSBOVUxMOwoJbWF4X2FjdGlvbnNfdCAqYWN0
+aW9ucyA9IERpZ2l0UmVjb2duaXRpb25fY29udmVydF9pbnRlcm5hbChzdG9yZWRfbWF4ZmlsZSwg
+JmludGVyZmFjZV9hY3Rpb25zLCAxLCAmY2JfZnVuYywgJmNiX2RhdGEpOwoJQ0hFQ0tfTlVMTChh
+Y3Rpb25zLCAiVW5hYmxlIHRvIGJ1aWxkIGFjdGlvbnMiLCBOVUxMKTsKCW1heF92YWxpZGF0ZShh
+Y3Rpb25zKTsKCUNIRUNLX0VSUk9SU19TVChhY3Rpb25zLCBOVUxMKTsKCUNIRUNLX0VSUk9SU19T
+VChzdG9yZWRfZW5naW5lLCBOVUxMKTsKCW1heF9ydW5fdCAqcnVuOwoJaWYgKGNiX2Z1bmMgPT0g
+TlVMTCkgewoJCXJ1biA9IG1heF9ydW5fbm9uYmxvY2soc3RvcmVkX2VuZ2luZSwgYWN0aW9ucyk7
+Cgl9IGVsc2UgewoJCXJ1biA9IG1heF9ydW5fbm9uYmxvY2tfd2l0aF9jYihzdG9yZWRfZW5naW5l
+LCBhY3Rpb25zLCBjYl9mdW5jLCBjYl9kYXRhKTsKCX0KCUNIRUNLX05VTEwocnVuLCAiVW5hYmxl
+IHRvIHJ1biBhY3Rpb25zIiwgTlVMTCk7CglDSEVDS19FUlJPUlNfU1QoYWN0aW9ucywgTlVMTCk7
+CgltYXhfYWN0aW9uc19mcmVlKGFjdGlvbnMpOwoJcmV0dXJuIHJ1bjsKfQoKdm9pZCBEaWdpdFJl
+Y29nbml0aW9uX3J1bigKCW1heF9lbmdpbmVfdCAqZW5naW5lLAoJRGlnaXRSZWNvZ25pdGlvbl9h
+Y3Rpb25zX3QgKmludGVyZmFjZV9hY3Rpb25zKQp7CgltYXhfcnVuX3QgKnJ1biA9IERpZ2l0UmVj
+b2duaXRpb25fcnVuX25vbmJsb2NrKGVuZ2luZSwgaW50ZXJmYWNlX2FjdGlvbnMpOwoJQ0hFQ0tf
+TlVMTChydW4sICJVbmFibGUgdG8gcnVuIGFjdGlvbnMiLCApOwoJbWF4X3dhaXQocnVuKTsKfQoK
+bWF4X3J1bl90ICpEaWdpdFJlY29nbml0aW9uX3J1bl9ub25ibG9jaygKCW1heF9lbmdpbmVfdCAq
+ZW5naW5lLAoJRGlnaXRSZWNvZ25pdGlvbl9hY3Rpb25zX3QgKmludGVyZmFjZV9hY3Rpb25zKQp7
+CgltYXhfZmlsZV90ICptYXhmaWxlID0gbWF4X2VuZ2luZV9nZXRfbWF4X2ZpbGUoZW5naW5lKTsg
+Cgl2b2lkICgqY2JfZnVuYykodm9pZCopID0gTlVMTDsKCXZvaWQgICpjYl9kYXRhICAgICAgICAg
+PSBOVUxMOwoJbWF4X2FjdGlvbnNfdCAqYWN0aW9ucyA9IERpZ2l0UmVjb2duaXRpb25fY29udmVy
+dF9pbnRlcm5hbChtYXhmaWxlLCBpbnRlcmZhY2VfYWN0aW9ucywgMSwgJmNiX2Z1bmMsICZjYl9k
+YXRhKTsKCUNIRUNLX0VSUk9SU19TVChhY3Rpb25zLCBOVUxMKTsKCW1heF9ydW5fdCAqcnVuOwoJ
+aWYgKGNiX2Z1bmMgPT0gTlVMTCkgewoJCXJ1biA9IG1heF9ydW5fbm9uYmxvY2soZW5naW5lLCBh
+Y3Rpb25zKTsKCX0gZWxzZSB7CgkJcnVuID0gbWF4X3J1bl9ub25ibG9ja193aXRoX2NiKGVuZ2lu
+ZSwgYWN0aW9ucywgY2JfZnVuYywgY2JfZGF0YSk7Cgl9CglDSEVDS19OVUxMKHJ1biwgIlVuYWJs
+ZSB0byBydW4gYWN0aW9ucyIsIE5VTEwpOwoJbWF4X2FjdGlvbnNfZnJlZShhY3Rpb25zKTsKCXJl
+dHVybiBydW47Cn0KCgovKioKICogXGJyaWVmIEdyb3VwIHJ1biBhZHZhbmNlZCBzdGF0aWMgZnVu
+Y3Rpb24gZm9yIHRoZSBpbnRlcmZhY2UgJ2RlZmF1bHQnLgogKiAKICogXHBhcmFtIFtpbl0gZ3Jv
+dXAgR3JvdXAgdG8gdXNlLgogKiBccGFyYW0gW2luLG91dF0gaW50ZXJmYWNlX2FjdGlvbnMgQWN0
+aW9ucyB0byBydW4uCiAqCiAqIFJ1biB0aGUgYWN0aW9ucyBvbiB0aGUgZmlyc3QgZGV2aWNlIGF2
+YWlsYWJsZSBpbiB0aGUgZ3JvdXAuCiAqLwp2b2lkIERpZ2l0UmVjb2duaXRpb25fcnVuX2dyb3Vw
+KG1heF9ncm91cF90ICpncm91cCwgRGlnaXRSZWNvZ25pdGlvbl9hY3Rpb25zX3QgKmludGVyZmFj
+ZV9hY3Rpb25zKQp7CgltYXhfcnVuX3QgKnJ1biA9IERpZ2l0UmVjb2duaXRpb25fcnVuX2dyb3Vw
+X25vbmJsb2NrKGdyb3VwLCBpbnRlcmZhY2VfYWN0aW9ucyk7CglDSEVDS19OVUxMKHJ1biwgIlVu
+YWJsZSB0byBydW4gYWN0aW9ucyIsICk7CgltYXhfd2FpdChydW4pOwp9CgoKLyoqCiAqIFxicmll
+ZiBHcm91cCBydW4gYWR2YW5jZWQgc3RhdGljIG5vbi1ibG9ja2luZyBmdW5jdGlvbiBmb3IgdGhl
+IGludGVyZmFjZSAnZGVmYXVsdCcuCiAqIAogKgogKiBTY2hlZHVsZSB0aGUgYWN0aW9ucyB0byBy
+dW4gb24gdGhlIGZpcnN0IGRldmljZSBhdmFpbGFibGUgaW4gdGhlIGdyb3VwIGFuZCByZXR1cm4g
+aW1tZWRpYXRlbHkuCiAqIFRoZSBzdGF0dXMgb2YgdGhlIHJ1biBtdXN0IGJlIGNoZWNrZWQgd2l0
+aCA6Om1heF93YWl0LiAKICogTm90ZSB0aGF0IHVzZSBvZiA6Om1heF9ub3dhaXQgaXMgcHJvaGli
+aXRlZCB3aXRoIG5vbi1ibG9ja2luZyBydW5uaW5nIG9uIGdyb3VwczoKICogc2VlIHRoZSA6Om1h
+eF9ydW5fZ3JvdXBfbm9uYmxvY2sgZG9jdW1lbnRhdGlvbiBmb3IgbW9yZSBleHBsYW5hdGlvbi4K
+ICoKICogXHBhcmFtIFtpbl0gZ3JvdXAgR3JvdXAgdG8gdXNlLgogKiBccGFyYW0gW2luXSBpbnRl
+cmZhY2VfYWN0aW9ucyBBY3Rpb25zIHRvIHJ1bi4KICogXHJldHVybiBBIGhhbmRsZSBvbiB0aGUg
+ZXhlY3V0aW9uIHN0YXR1cyBvZiB0aGUgYWN0aW9ucywgb3IgTlVMTCBpbiBjYXNlIG9mIGVycm9y
+LgogKi8KbWF4X3J1bl90ICpEaWdpdFJlY29nbml0aW9uX3J1bl9ncm91cF9ub25ibG9jayhtYXhf
+Z3JvdXBfdCAqZ3JvdXAsIERpZ2l0UmVjb2duaXRpb25fYWN0aW9uc190ICppbnRlcmZhY2VfYWN0
+aW9ucykKewoJbWF4X2ZpbGVfdCAqbWF4ZmlsZSA9IG1heF9ncm91cF9nZXRfbWF4X2ZpbGUoZ3Jv
+dXApOwoJbWF4X2FjdGlvbnNfdCAqYWN0aW9ucyA9IERpZ2l0UmVjb2duaXRpb25fY29udmVydF9p
+bnRlcm5hbChtYXhmaWxlLCBpbnRlcmZhY2VfYWN0aW9ucywgMSwgTlVMTCwgTlVMTCk7CglpZihh
+Y3Rpb25zID09IE5VTEwpIHJldHVybiBOVUxMOwoJaWYoIW1heF9vayhhY3Rpb25zLT5lcnJvcnMp
+KSByZXR1cm4gTlVMTDsKCW1heF92YWxpZGF0ZShhY3Rpb25zKTsKCW1heF9ydW5fdCAqcnVuID0g
+bWF4X3J1bl9ncm91cF9ub25ibG9jayhncm91cCwgYWN0aW9ucyk7CgltYXhfYWN0aW9uc19mcmVl
+KGFjdGlvbnMpOwoJcmV0dXJuIHJ1bjsKfQoKCi8qKgogKiBcYnJpZWYgQXJyYXkgcnVuIGFkdmFu
+Y2VkIHN0YXRpYyBmdW5jdGlvbiBmb3IgdGhlIGludGVyZmFjZSAnZGVmYXVsdCcuCiAqIAogKiBc
+cGFyYW0gW2luXSBlbmdhcnJheSBUaGUgYXJyYXkgb2YgZGV2aWNlcyB0byB1c2UuCiAqIFxwYXJh
+bSBbaW4sb3V0XSBpbnRlcmZhY2VfYWN0aW9ucyBUaGUgYXJyYXkgb2YgYWN0aW9ucyB0byBydW4u
+CiAqCiAqIFJ1biB0aGUgYXJyYXkgb2YgYWN0aW9ucyBvbiB0aGUgYXJyYXkgb2YgZW5naW5lcy4g
+IFRoZSBsZW5ndGggb2YgaW50ZXJmYWNlX2FjdGlvbnMKICogbXVzdCBtYXRjaCB0aGUgc2l6ZSBv
+ZiBlbmdhcnJheS4KICovCnZvaWQgRGlnaXRSZWNvZ25pdGlvbl9ydW5fYXJyYXkobWF4X2VuZ2Fy
+cmF5X3QgKmVuZ2FycmF5LCBEaWdpdFJlY29nbml0aW9uX2FjdGlvbnNfdCAqaW50ZXJmYWNlX2Fj
+dGlvbnNbXSkKewoJbWF4X3J1bl90ICpydW4gPSBEaWdpdFJlY29nbml0aW9uX3J1bl9hcnJheV9u
+b25ibG9jayhlbmdhcnJheSwgaW50ZXJmYWNlX2FjdGlvbnMpOwoJQ0hFQ0tfTlVMTChydW4sICJV
+bmFibGUgdG8gcnVuIGFjdGlvbnMiLCApOwoJbWF4X3dhaXQocnVuKTsKfQoKCi8qKgogKiBcYnJp
+ZWYgQXJyYXkgcnVuIGFkdmFuY2VkIHN0YXRpYyBub24tYmxvY2tpbmcgZnVuY3Rpb24gZm9yIHRo
+ZSBpbnRlcmZhY2UgJ2RlZmF1bHQnLgogKiAKICoKICogU2NoZWR1bGUgdG8gcnVuIHRoZSBhcnJh
+eSBvZiBhY3Rpb25zIG9uIHRoZSBhcnJheSBvZiBlbmdpbmVzLCBhbmQgcmV0dXJuIGltbWVkaWF0
+ZWx5LgogKiBUaGUgbGVuZ3RoIG9mIGludGVyZmFjZV9hY3Rpb25zIG11c3QgbWF0Y2ggdGhlIHNp
+emUgb2YgZW5nYXJyYXkuCiAqIFRoZSBzdGF0dXMgb2YgdGhlIHJ1biBjYW4gYmUgY2hlY2tlZCBl
+aXRoZXIgYnkgOjptYXhfd2FpdCBvciA6Om1heF9ub3dhaXQ7CiAqIG5vdGUgdGhhdCBvbmUgb2Yg
+dGhlc2UgKm11c3QqIGJlIGNhbGxlZCwgc28gdGhhdCBhc3NvY2lhdGVkIG1lbW9yeSBjYW4gYmUg
+cmVsZWFzZWQuCiAqCiAqIFxwYXJhbSBbaW5dIGVuZ2FycmF5IFRoZSBhcnJheSBvZiBkZXZpY2Vz
+IHRvIHVzZS4KICogXHBhcmFtIFtpbl0gaW50ZXJmYWNlX2FjdGlvbnMgVGhlIGFycmF5IG9mIGFj
+dGlvbnMgdG8gcnVuLgogKiBccmV0dXJuIEEgaGFuZGxlIG9uIHRoZSBleGVjdXRpb24gc3RhdHVz
+IG9mIHRoZSBhY3Rpb25zLCBvciBOVUxMIGluIGNhc2Ugb2YgZXJyb3IuCiAqLwptYXhfcnVuX3Qg
+KkRpZ2l0UmVjb2duaXRpb25fcnVuX2FycmF5X25vbmJsb2NrKG1heF9lbmdhcnJheV90ICplbmdh
+cnJheSwgRGlnaXRSZWNvZ25pdGlvbl9hY3Rpb25zX3QgKmludGVyZmFjZV9hY3Rpb25zW10pCnsK
+CW1heF9maWxlX3QgKm1heGZpbGUgPSBtYXhfZW5nYXJyYXlfZ2V0X21heF9maWxlKGVuZ2FycmF5
+LCAwKTsKCWludCBpOwoJbWF4X2FjdGFycmF5X3QgKmFjdGFycmF5ID0gbWF4X2FjdGFycmF5X2lu
+aXQobWF4ZmlsZSwgZW5nYXJyYXktPnNpemUpOwoJaWYgKGFjdGFycmF5ID09IE5VTEwpIHJldHVy
+biBOVUxMOwoJbWF4X2FjdGlvbnNfdCAqKmFycl9hY3Rpb25zID0gbWFsbG9jKGVuZ2FycmF5LT5z
+aXplICogc2l6ZW9mKG1heF9hY3Rpb25zX3QqKSk7Cglmb3IgKCBpID0gMCA7IGkgPCBhY3RhcnJh
+eS0+c2l6ZTsgaSsrICkgewoJCW1heF9hY3Rpb25zX3QgKmFjdGlvbnMgPSBEaWdpdFJlY29nbml0
+aW9uX2NvbnZlcnRfaW50ZXJuYWwobWF4ZmlsZSwgaW50ZXJmYWNlX2FjdGlvbnNbaV0sIDEsIE5V
+TEwsIE5VTEwpOwoJCWlmIChhY3Rpb25zID09IE5VTEwpIHJldHVybiBOVUxMOwoJCWFycl9hY3Rp
+b25zW2ldID0gYWN0aW9uczsKCQltYXhfc2V0X2FjdGlvbihhY3RhcnJheSwgaSwgYWN0aW9ucyk7
+Cgl9CgltYXhfcnVuX3QgKnJ1biA9IG1heF9ydW5fYXJyYXlfbm9uYmxvY2soZW5nYXJyYXksIGFj
+dGFycmF5KTsKCWZvciAoIGkgPSAwIDsgaSA8IGFjdGFycmF5LT5zaXplIDsgaSsrICkgeyBtYXhf
+YWN0aW9uc19mcmVlKGFycl9hY3Rpb25zW2ldKTsgfQoJbWF4X2FjdGFycmF5X2ZyZWUoYWN0YXJy
+YXkpOwoJZnJlZShhcnJfYWN0aW9ucyk7CglyZXR1cm4gcnVuOwp9CgoKLyoqCiAqIFxicmllZiBD
+b252ZXJ0cyBhIHN0YXRpYy1pbnRlcmZhY2UgYWN0aW9uIHN0cnVjdCBpbnRvIGEgZHluYW1pYy1p
+bnRlcmZhY2UgbWF4X2FjdGlvbnNfdCBzdHJ1Y3QuCiAqCiAqIE5vdGUgdGhhdCB0aGlzIGlzIGFu
+IGludGVybmFsIHV0aWxpdHkgZnVuY3Rpb24gdXNlZCBieSBvdGhlciBmdW5jdGlvbnMgaW4gdGhl
+IHN0YXRpYyBpbnRlcmZhY2UuCiAqCiAqIFxwYXJhbSBbaW5dIG1heGZpbGUgVGhlIG1heGZpbGUg
+dG8gdXNlLgogKiBccGFyYW0gW2luXSBpbnRlcmZhY2VfYWN0aW9ucyBUaGUgaW50ZXJmYWNlLXNw
+ZWNpZmljIGFjdGlvbnMgdG8gcnVuLgogKiBccmV0dXJuIFRoZSBkeW5hbWljLWludGVyZmFjZSBh
+Y3Rpb25zIHRvIHJ1biwgb3IgTlVMTCBpbiBjYXNlIG9mIGVycm9yLgogKi8KbWF4X2FjdGlvbnNf
+dCogRGlnaXRSZWNvZ25pdGlvbl9jb252ZXJ0KG1heF9maWxlX3QgKm1heGZpbGUsIERpZ2l0UmVj
+b2duaXRpb25fYWN0aW9uc190ICppbnRlcmZhY2VfYWN0aW9ucykKewoJcmV0dXJuIERpZ2l0UmVj
+b2duaXRpb25fY29udmVydF9pbnRlcm5hbChtYXhmaWxlLCBpbnRlcmZhY2VfYWN0aW9ucywgMCwg
+TlVMTCwgTlVMTCk7Cn0KCiN1bmRlZiBDSEVDS19FUlJPUlNfU1QKI3VuZGVmIENIRUNLX05VTEwK
+Cgo=
+#endif /* SLIC_B64_DEFINITIONS */
+
+#ifdef SLIC_EXTRA_FILES
+PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHVz
+ZXJmaWxlcyBmb3JtYXQtdmVyc2lvbj0iMjAxMjAyMDAiLz4=
+#endif /* SLIC_EXTRA_FILES */
+
+#ifdef PHOTON_NODE_ADD_DATA
+#define PHOTON_NODE_ADD_DATA_PRESENT 1
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 3, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 224, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 7, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 223, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 5, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 170, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 222, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 118, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 119, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 120, "SquashFactor", 1.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 121, "SquashFactor", 1.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 196, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 0, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 1, "SquashFactor", 1.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 2, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 221, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 8, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 100, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 220, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 109, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 151, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 114, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 219, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 112, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 116, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 101, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 110, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 157, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 113, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 172, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 115, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 144, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 105, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 218, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 103, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 107, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 104, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 174, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 106, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 142, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 217, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 82, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 216, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 91, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 150, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 96, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 215, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 94, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 98, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 83, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 92, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 156, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 95, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 176, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 97, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 140, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 87, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 214, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 85, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 89, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 86, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 178, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 88, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 138, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 213, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 64, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 212, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 73, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 149, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 78, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 211, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 76, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 80, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 65, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 74, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 155, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 77, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 180, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 79, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 136, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 69, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 210, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 67, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 71, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 68, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 182, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 70, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 134, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 209, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 46, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 208, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 55, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 148, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 60, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 207, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 58, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 62, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 47, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 56, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 154, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 59, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 184, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 61, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 132, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 51, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 206, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 49, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 53, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 50, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 186, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 52, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 130, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 205, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 28, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 204, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 37, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 147, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 42, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 203, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 40, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 44, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 29, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 38, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 153, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 41, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 188, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 43, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 128, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 33, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 202, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 31, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 35, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 32, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 190, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 34, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 126, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 191, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 201, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 19, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 146, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 24, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 200, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 22, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 26, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 11, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 20, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 152, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 23, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 193, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 25, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 124, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 15, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 199, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 13, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 17, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 14, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 195, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 16, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 123, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 125, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 127, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 129, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 131, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 133, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 135, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 137, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 139, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 141, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 143, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 145, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 122, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 162, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 198, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 159, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 160, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 161, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 163, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 197, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 165, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 166, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 168, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 169, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(DigitRecognitionKernel, 167, "SquashFactor", 0.0)
+#endif
+
+#ifdef MAXFILE_SIGNATURE
+#define MAXFILE_SIGNATURE_PRESENT 1
+MAXFILE_SIGNATURE("302d02144c47bcf64c90a5d57c69f28e4bb64cac1e4cb94a0215008df211a03b3c73490f87c44198e320913fcb1760")
+#endif
+

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<maxCompilerManager version="2">
+<enginePart internalEngineSubproject="DigitRecognition_EngineCode" isSrcBin="false" isUseDefaultSelected="false" outputLocation="/DigitRecognition_EngineCode/bin" projectName="DigitRecognition"/>
+<cpuPart internalCpuSubproject="DigitRecognition_CPUCode"/>
+<watchedFiles/>
+</maxCompilerManager>
