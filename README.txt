@@ -1,13 +1,13 @@
-*** This project uses TensorFlow and Maxeler to train and validate a neural network for digit recognition.
-The goal is to make digit recognition faster by moving one part of code to the DFE.
+*** This project uses TensorFlow and Maxeler to train a model to recognize images.
+The goal is to make the process faster by moving one part of code to the DFE.
 
 
 * TensorFlow was used for model training.
 * It was run on CPU and was written in Python using available tensor libraries. 
 * TensorFlow code is given in APP/TensorFlow_src folder.
-* In order to run the code, you'll need to install TensorFlow (https://www.tensorflow.org/versions/master/get_started/os_setup.html).
-* After you have installed TensorFlow, run code as "python ./digit_recognition.py"  
-* TensorFlow code does next things:
+* In order to run it, you'll need to install TensorFlow (https://www.tensorflow.org/versions/master/get_started/os_setup.html).
+* After you have installed TensorFlow engine, run the code with "python ./digit_recognition.py"  
+* TensorFlow does next things:
   * trains the model
   * evaluates the model
   * stores the model in a file (for latter use by Maxeler)
@@ -24,7 +24,7 @@ The goal is to make digit recognition faster by moving one part of code to the D
 	- weights
   * data used for validation (a file containg 10000 images, each containing one digit; test data was pulled from http://yann.lecun.com/exdb/mnist/)
 	- gray_tests
-* Maxeler code does next things:
+* Maxeler does next things:
   * evaluates the model using gray_tests data
   * measures the validation speed in seconds 
 
