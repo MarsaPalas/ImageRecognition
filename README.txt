@@ -1,26 +1,34 @@
-*** This project uses TensorFlow and Maxeler to train and validate a neural network for image recognition.
-The goal is to make image recognition faster by moving one part of code to the DFE.
+*** This project uses TensorFlow and Maxeler to train and validate a neural network for digit recognition.
+The goal is to make digit recognition faster by moving one part of code to the DFE.
 
 
-* TensorFlow was used for training.
-  It was run on CPU and was written in Python using available tensor libraries. 
-  TensorFlow code is not given here. It can be easily reached from official TensofFlow website.
+* TensorFlow was used for model training.
+* It was run on CPU and was written in Python using available tensor libraries. 
+* TensorFlow code is given in APP/TensorFlow_src folder.
+* In order to run the code, you'll need to install TensorFlow (https://www.tensorflow.org/versions/master/get_started/os_setup.html).
+* After you have installed TensorFlow, run code as "python ./digit_recognition.py"  
+* TensorFlow code does next things:
+  * trains the model
+  * evaluates the model
+  * stores the model in a file (for latter use by Maxeler)
+  * measures the speed of validation in seconds
 
 
-* Maxeler code was used for validation.
-  It was run on an FPGA chip and was written in Java and C.
-  Maxeler code is given in an APP directory, and it is ready to be imported and ran in MaxIDE as Simulation or real DFE version.
-  Folder APP\DigitRecognition\EngineCode\src\files contains:
-
-  * data used for model (TensorFlow outputs; training data pulled from mnist, http://yann.lecun.com/exdb/mnist/)
+* Maxeler code was used for model validation.
+* It was run on an FPGA chip and was written in Java and C.
+* Maxeler code is given in APP/Maxeler_src/DigitRecognition folder and it is ready to be imported and ran in MaxIDE as Simulation or DFE version.
+* Folder APP\Maxeler_src\DigitRecognition\EngineCode\src\files contains data needed for validation process:
+  * data used for model (Made by TensorFlow code)
 	- biases
 	- labels
 	- weights
-  * data used for validation (a file containg 10000 images, each containing one digit; data pulled from the same site)
+  * data used for validation (a file containg 10000 images, each containing one digit; test data was pulled from http://yann.lecun.com/exdb/mnist/)
 	- gray_tests
+* Maxeler code does next things:
+  * evaluates the model using gray_tests data
+  * measures the validation speed in seconds 
 
-* DigitRecognition\CPUCode contains C code that is ran on the CPU.
-  The C code feeds gray_tests data to the DFE. 
-  The time needed for DFE to finish is measured and written in the console (speed results are presented here, DOC/HybridMaxUser).
-  
+
+* Comparing FPGA (Maxeler) and CPU (TensorFlow) validation speed shows next results:   
+  * DOC/HybridMaxUser, slide 13/15
 	
